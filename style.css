@@ -1,0 +1,32 @@
+body {
+    background-color: #040822;
+    color: #9bc9f2;
+    text-align: center;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media screen and (max-width: 480px) {
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+button {
+    padding: 1px;
+}
+
+div {
+    width: 75%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #092045;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    padding-bottom: 45%;
+}
