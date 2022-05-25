@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Video player is busted, will revisit this tomorrow. Layout is done though-->
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
@@ -13,15 +14,46 @@
     <p>Enter YouTube link below</p>
 
         <section>
-        <input placeholder="Enter URL here" button="yes">
-        <button type="button">Go!</button>
-            </section>
+        <form id="form">
+        <input id="url" type="text" name="vidurl" placeholder="Enter URL here">
+        <button type="button" onclick="load()" value="Write URL">Go!</button>
+        <br><br>
+        </form>
+
+            <!-- Video player section [START]-->
+        <video
+         id="myVideo" 
+         controls 
+         preload="none" 
+         width="320px" 
+         height="auto">
+            <source src="url" type="video/ogg, mp4; codecs=dirac, speex">
+            Your browser does not support these nuts <code>video</code> element.
+        </video>
+            <!-- Video player section [END]-->
+
+
+            <!-- Data output from video-->
+            <br></br>
+            <p>[Opportunity cost output here: Years, Months, Days, Hours, Mins, Secs, etc...]</p>
+        </section>
+
     </div>
     <script>
-           var pressedButton = document.getElementsByTagName("button")[0];
-   pressedButton.addEventListener("click", function (event) {
-      alert("This is the cost of opportunity")
-   })
+   
+        function load()
+         {
+             let vid = document.getElementById('myVideo');
+             vid.src = document.getElementById('url').value;
+             vid.play();
+         }
+
+//             let cost = 0;
+//            var pressedButton = document.getElementsByTagName("button")[0];
+//    pressedButton.addEventListener("click", function (event) {
+//       alert("This is the cost of opportunity: " + cost)
+//    })
+
     </script>
 </body>
 </html>
