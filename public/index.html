@@ -15,8 +15,8 @@
 
         <section>
         <form id="form">
-        <input id="url" type="text" name="vidurl" placeholder="Enter URL here">
-        <button type="button" onclick="load()" value="Write URL">Go!</button>
+        <input id="youtube-url-input" type="text" name="vidurl" placeholder="Enter URL here">
+        <button id="submit-button" type="button" value="Write URL">Go!</button>
         <br><br>
         </form>
 
@@ -39,21 +39,6 @@
         </section>
 
     </div>
-    <script>
-   
-        function load()
-         {
-             let vid = document.getElementById('myVideo');
-             vid.src = document.getElementById('url').value;
-             vid.play();
-         }
-
-//             let cost = 0;
-//            var pressedButton = document.getElementsByTagName("button")[0];
-//    pressedButton.addEventListener("click", function (event) {
-//       alert("This is the cost of opportunity: " + cost)
-//    })
-
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
