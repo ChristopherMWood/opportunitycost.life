@@ -18,36 +18,41 @@
     </script>
 </head>
 <body>
-    <div>
-    <h1>Opportunity Cost (CD TEST)</h1> 
-    <p>Enter YouTube link below</p>
+    <div class="main">
+    <h1>Opportunity Cost</h1> 
 
-        <section>
-        <form id="form">
-        <input id="youtube-url-input" type="text" name="vidurl" placeholder="Enter URL here">
-        <button id="submit-button" type="button" value="Write URL">Go!</button>
-        <br><br>
+        <section id="form" class="form__group">
+        <form>
+            <input class="form__field" type="input" id="path" name="URL" placeholder="Enter URL"/>
+                <label for="path" class="form__label">Enter YouTube URL</label>
+
+            <input class="button-59" type="submit" value="Go"/>
         </form>
-
-            <!-- Video player section [START]-->
-        <video
-         id="myVideo" 
-         controls 
-         preload="none" 
-         width="320px" 
-         height="auto">
-            <source src="url" type="video/ogg, mp4; codecs=dirac, speex">
-            Your browser does not support these nuts <code>video</code> element.
-        </video>
-            <!-- Video player section [END]-->
-
-
-            <!-- Data output from video-->
-            <br></br>
-            <p>[Opportunity cost output here: Years, Months, Days, Hours, Mins, Secs, etc...]</p>
         </section>
+    <br>
+    <div>
+        <p class="definition">opportunity cost (noun) - 
+            1. The cost of an opportunity forgone (and the loss of the benefits that could be received from that opportunity); the most valuable forgone alternative.
+            <br>
+            2. cost in terms of foregoing alternatives
+        </p>
+            </div>
+         </div>
+
+        <br><br>
+        </section>
+       
 
     </div>
-    <script src="index.js"></script>
+    <script>
+        function play(){
+        var path = document.getElementById("path").value;
+        document.getElementById('show').innerHTML='<video  id="movie" src="'+path+'" height="auto" width="500px" controls autoplay > </video>';
+        var player =document.getElementById('movie');
+        player.load();
+
+        }
+
+    </script>
 </body>
 </html>
