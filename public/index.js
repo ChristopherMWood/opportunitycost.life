@@ -1,5 +1,5 @@
 document.getElementById('submit-button').addEventListener('click', function (event) {
-    const value = document.getElementById('youtube-url-input').value;
+    const value = document.getElementById('path').value;
 
     if (value && isValidHttpUrl(value))
     {
