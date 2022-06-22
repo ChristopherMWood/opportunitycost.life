@@ -1,18 +1,61 @@
-document.getElementById('submit-button').addEventListener('click', function (event) {
-    const value = document.getElementById('path').value;
+window.onload = function() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const videoId = urlParams.get('v');
 
-    if (value && isValidHttpUrl(value)) {
-        const videoId = getVideoIdFromUrl(value);
-
+    if (videoId) {
         getOpportunityCost(videoId, (data) => {
             if (data) {
-                alert(JSON.stringify(data));
-                console.log(data);
+                displayResults(videoId, data);
             } else {
-                alert('An Error occured');
+                console.error("unknown error occured");
             }
         });
     }
+};
+
+document.getElementById('submit-button').addEventListener('click', function (event) {
+    event.preventDefault();
+    const value = document.getElementById('path').value;
+    const errorTextElement = document.getElementById("path-error-text");
+
+    if (!value) {
+        errorTextElement.innerHTML = "input cannot be empty";
+        errorTextElement.style.display = "block";
+        document.getElementById('path').focus();
+        return;
+    }
+
+    if (!isValidHttpUrl(value)) {
+        errorTextElement.innerHTML = "invalid url";
+        errorTextElement.style.display = "block";
+        document.getElementById('path').focus();
+        return;
+    }
+
+    const videoId = getVideoIdFromUrl(value);
+
+    if (!videoId) {
+        errorTextElement.innerHTML = "no video id found in url";
+        errorTextElement.style.display = "block";
+        document.getElementById('path').focus();
+        return;
+    }
+
+    document.getElementById("submit-button").disabled = true;
+
+    getOpportunityCost(videoId, (data) => {
+        if (data) {
+            errorTextElement.style.display = "none";
+            document.getElementById("submit-button").disabled = false;
+            displayResults(value, data);
+        } else {
+            errorTextElement.innerHTML = "something went wrong, check the url and try again";
+            errorTextElement.style.display = "block";
+            document.getElementById('path').focus();
+            document.getElementById("submit-button").disabled = false;
+        }
+    });
 }, false);
 
 function getQueryData(queryString) {
@@ -77,4 +120,19 @@ function getOpportunityCost(videoId, callback) {
     }).catch(function (err) {
         callback(err);
     });
+}
+
+function displayResults(url, data) {
+    document.getElementById("youtube-url").innerHTML = url;
+    document.getElementById("video-views").innerHTML = data.views;
+    document.getElementById("total-seconds").innerHTML = data.totalSeconds;
+    document.getElementById("centuries").innerHTML = data.formattedTime.centuries;
+    document.getElementById("decades").innerHTML = data.formattedTime.decades;
+    document.getElementById("years").innerHTML = data.formattedTime.years;
+    document.getElementById("months").innerHTML = data.formattedTime.months;
+    document.getElementById("days").innerHTML = data.formattedTime.days;
+    document.getElementById("hours").innerHTML = data.formattedTime.hours;
+    document.getElementById("minutes").innerHTML = data.formattedTime.minutes;
+    document.getElementById("seconds").innerHTML = data.formattedTime.seconds;
+    document.getElementById("results-container").style.display = "block";
 }

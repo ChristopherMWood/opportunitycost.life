@@ -129,3 +129,12 @@ body {
 .definition {
     font-size: 16px;
 }
+
+.error-text {
+    color: #f44336;
+    display: none;
+}
+
+#results-container {
+    display: none;
+}

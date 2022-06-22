@@ -15,12 +15,25 @@
         <section id="form" class="form__group">
         <form>
             <input class="form__field" type="input" id="path" name="URL" placeholder="Enter URL"/>
-                <label for="path" class="form__label">Enter YouTube URL</label>
-
+            <label for="path" class="form__label">Enter YouTube URL</label>
             <input id="submit-button" class="button-59" type="submit" value="Go"/>
+            <span id="path-error-text" class="error-text"></span>
         </form>
         </section>
     <br>
+    <div id="results-container">
+        <div class="result-block"><span id="youtube-url"></span></div>
+        <div>Views: <span id="video-views"></span></div>
+        <div>Total Seconds: <span id="total-seconds"></span></div>
+        <div>Centuries: <span id="centuries"></span></div>
+        <div>Decades: <span id="decades"></span></div>
+        <div>Years: <span id="years"></span></div>
+        <div>Months: <span id="months"></span></div>
+        <div>Days: <span id="days"></span></div>
+        <div>Hours: <span id="hours"></span></div>
+        <div>Minutes: <span id="minutes"></span></div>
+        <div>Seconds: <span id="seconds"></span></div>
+    </div>
     <div>
         <p class="definition">opportunity cost (noun) - 
             1. The cost of an opportunity forgone (and the loss of the benefits that could be received from that opportunity); the most valuable forgone alternative.
