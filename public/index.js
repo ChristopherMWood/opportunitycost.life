@@ -111,7 +111,7 @@ function isValidHttpUrl(string) {
 }
 
 function getOpportunityCost(videoId, callback) {
-    const url = 'https://christopherwood.dev/api/opportunitycost/' + videoId;
+    const url = 'https://api.christopherwood.dev/api/opportunitycost/' + videoId;
 
     fetch(url).then(function (response) {
         response.json().then((json) => {
