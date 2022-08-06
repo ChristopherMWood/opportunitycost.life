@@ -20,14 +20,13 @@ document.getElementById('submit-button').addEventListener('click', function (eve
     const errorTextElement = document.getElementById("path-error-text");
 
     if (!value) {
-        errorTextElement.innerHTML = "input cannot be empty";
-        errorTextElement.style.display = "block";
+        errorTextElement.style.display = "none";
         document.getElementById('path').focus();
         return;
     }
 
     if (!isValidHttpUrl(value)) {
-        errorTextElement.innerHTML = "invalid url";
+        errorTextElement.innerHTML = "must enter a YouTube video url";
         errorTextElement.style.display = "block";
         document.getElementById('path').focus();
         return;
