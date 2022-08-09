@@ -1,21 +1,72 @@
 import './styles.scss';
 import ReactPlayer from "react-player"
+import CountUp from 'react-countup';
+
+const specificOpportunityCosts = [
+	{ costPer: 23, description: '' }
+];
+
+const costBlock = (value, singularUnit, pluralUnit) => {
+	if (value > 0) {
+		return (
+			<div className='cost-block'>
+				<CountUp className='cost-value' start={0} end={value} delay={0} duration={1.5} />
+				<label className='cost-unit'>{value === 1 ? `${singularUnit}` : `${pluralUnit}`}</label>
+			</div>
+		);
+	}
+
+	return null;
+  };
+
+
+const specificCostBlock = (value, description) => {
+	return (
+		<div className='specific-cost-block'>
+			<label>{value}</label>
+			<p>{description}</p>
+		</div>
+	);
+  };
 
 function ResultsView(props) {
+
+	const getCostBlockComponents = (formattedTime) => {
+		const costBlocks = [];
+
+		costBlocks.push(costBlock(props.data.formattedTime.centuries, 'Century', 'Centuries'));
+		costBlocks.push(costBlock(props.data.formattedTime.decades, 'Decade', 'Decades'));
+		costBlocks.push(costBlock(props.data.formattedTime.years, 'Year', 'Years'));
+		costBlocks.push(costBlock(props.data.formattedTime.months, 'Month', 'Months'));
+		costBlocks.push(costBlock(props.data.formattedTime.days, 'Day', 'Days'));
+		costBlocks.push(costBlock(props.data.formattedTime.hours, 'Hour', 'Hours'));
+		costBlocks.push(costBlock(props.data.formattedTime.minutes, 'Minute', 'Minutes'));
+		costBlocks.push(costBlock(props.data.formattedTime.seconds, 'Second', 'Seconds'));
+
+		return costBlocks;
+	}
+
+	const getSpecificOpportunityCosts =() => {
+		const specificCost = [];
+
+		specificCost.push(specificCostBlock('1k', 'College educations worth of time were spent'));
+
+		return specificCost;
+	};
+
 	return (
 		<div className='results-container'>
-			<label>Video TITLE HERE</label>
-			<ReactPlayer url={`https://www.youtube.com/watch?v=${props.videoId}`} />
-			<label>Views: {props.data.views}</label>
-			<label>Video Length HERE</label>
-			<br /><label hidden={!props.data.formattedTime.centuries}>{props.data.formattedTime.centuries} centuries</label>
-			<br /><label hidden={!props.data.formattedTime.decades}>{props.data.formattedTime.decades} decades</label>
-			<br /><label hidden={!props.data.formattedTime.years}>{props.data.formattedTime.years} years</label>
-			<br /><label hidden={!props.data.formattedTime.months}>{props.data.formattedTime.months} months</label>
-			<br /><label hidden={!props.data.formattedTime.days}>{props.data.formattedTime.days} days</label>
-			<br /><label hidden={!props.data.formattedTime.hours}>{props.data.formattedTime.hours} hours</label>
-			<br /><label hidden={!props.data.formattedTime.minutes}>{props.data.formattedTime.minutes} minutes</label>
-			<br /><label hidden={!props.data.formattedTime.seconds}>{props.data.formattedTime.seconds} seconds</label>
+			<h2>Title: Placeholder Video Title Here</h2>
+			<label>Total Views: {props.data.views}</label>
+
+			<h3>Total Opportunity Cost by Time</h3>
+			<div className='opportunity-cost-block-container'>
+				{getCostBlockComponents(props.data.formattedTime)}
+			</div>
+			<h3>Depressing Stats for Fun</h3>
+			<div className='opportunity-cost-block-container'>
+				{getSpecificOpportunityCosts()}
+			</div>
 		</div>
 	);
   }

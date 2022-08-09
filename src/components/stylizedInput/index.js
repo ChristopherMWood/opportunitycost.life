@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StylizedButton from '../stylizedButton';
 import './styles.scss';
 
 function StylizedInput(props) {
 	const [input, setInput] = useState('');
 	const [errorText, setErrorText] = useState(undefined);
+
+	useEffect(() => {
+		setInput(props.initialValue);
+	}, [props.initialValue]);
 
 	const updateInput = (event) => {
 		setInput(event.target.value);
@@ -25,7 +29,7 @@ function StylizedInput(props) {
 		<div className='stylized-input'>
 			<form onSubmit={onSubmit}>
 				<div className="form__group field">
-					<input type="input" className="form__field" onChange={updateInput} placeholder={props.placeholderText} name="youtube-url" id='youtube-url' />
+					<input value={input} type="input" className="form__field" onChange={updateInput} placeholder={props.placeholderText} name="youtube-url" id='youtube-url' />
 					<label htmlFor="youtube-url" className="form__label">{props.placeholderText}</label>
 				</div>
 				<StylizedButton buttonText="Calculate" />

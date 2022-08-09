@@ -8,9 +8,9 @@ function GlobalHeader(props) {
 			<div className="wrapper site-header__wrapper">
 				<a href="/" className="brand"><img id='site-logo' src={SiteIcon} alt='site logo' /></a>
 				<nav className="nav">
-					<Link className="link-style" to="/top-videos">Top Videos</Link>
-					<Link className="link-style" to="/top-channels">Top Channels</Link>
-					<Link className="link-style" to="/about">About</Link>
+					<Link className="btn btn-2" to="/top-videos">Top Videos</Link>
+					<Link className="btn btn-2" to="/top-channels">Top Channels</Link>
+					<Link className="btn btn-2" to="/about">About</Link>
 				</nav>
 			</div>
 		</header>
