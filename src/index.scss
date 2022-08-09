@@ -1,0 +1,29 @@
+$background-color: #040822;
+
+html {
+  background-color: black;
+}
+
+body {
+  color: white;
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: $background-color;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  // background-image: radial-gradient(circle at 0% 0%, rgb(22, 42, 157), #0a1350 51%, #040822);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.site-page-container {
+  display: block;
+}

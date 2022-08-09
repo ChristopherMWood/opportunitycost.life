@@ -1,0 +1,29 @@
+.collapsable {
+	overflow:hidden;
+	max-height: 300px;
+	transition: max-height 2s cubic-bezier(0, 1.05, 0, 1), opacity 3s cubic-bezier(0, 1.05, 0, 1);
+}
+
+.collapsable.collapsed {
+	max-height: 0px;
+	opacity: 0;
+}
+
+.input-container {
+	margin-bottom: 25px;
+}
+
+// .our_content {
+// 	/* Initially we don't want any height, and we want the contents to be hidden */
+// 	max-height: 0;
+// 	overflow: hidden;
+
+// 	/* Set our transitions up. */
+// 	-webkit-transition: max-height 0.8s;
+// 	-moz-transition: max-height 0.8s;
+// 	transition: max-height 0.8s;
+// }
+// .outside_box:hover .our_content {
+// 	/* On hover, set the max-height to something large. In this case there's an obvious limit. */
+// 	max-height: 200px;
+// }
