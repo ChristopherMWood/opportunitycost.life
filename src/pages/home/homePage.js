@@ -33,7 +33,6 @@ function HomePage(props) {
 	const onSuccessfulSubmit = (videoUrl, manual = true) => {
 		const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(videoUrl);
 		OpportunityCostApiProxy.getMetadata(videoId, (data) => {
-			console.log(data);
 			setResultsData(data);
 			setVideoId(videoId);
 			setResultsLoaded(true);
