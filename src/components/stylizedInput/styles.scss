@@ -23,6 +23,10 @@ $gray: #9b9b9b;
     padding: 7px 0;
     background: transparent;
     transition: border-color 0.2s;
+    border-width: 3px;
+    border-image: linear-gradient(to right, $primary,$secondary);
+    border-image-slice: 1;
+    font-weight:700;
 
     &::placeholder {
       color: transparent;
@@ -41,7 +45,7 @@ $gray: #9b9b9b;
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: $gray;
+    color: $primary;
   }
 
   .form__field:focus {
@@ -52,13 +56,8 @@ $gray: #9b9b9b;
       transition: 0.2s;
       font-size: 1rem;
       color: $primary;
-      font-weight:700;    
     }
-    padding-bottom: 6px;  
     font-weight: 700;
-    border-width: 3px;
-    border-image: linear-gradient(to right, $primary,$secondary);
-    border-image-slice: 1;
   }
   /* reset input */
   .form__field{
@@ -66,6 +65,8 @@ $gray: #9b9b9b;
   }
 
   .error-text {
-    color: red;
+    color: #ff4d4d;
+    display: block;
+    margin-top: 10px;
   }
 }

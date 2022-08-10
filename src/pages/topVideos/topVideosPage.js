@@ -10,15 +10,15 @@ function TopVideosPage(props) {
 	const ListItem = ({ title, index }) => (
 		<View>
 			<div>
-				<label>{index + 1}</label>
+				<label>#{index + 1}</label>
 				<label>{title}</label>
 			</div>
 	 	</View> 
 	);
 
 	return (
-		<div className='top-videos-page'>
-			<h2>Top Videos (so far)</h2>
+		<div className='site-page-container top-videos-page'>
+			<h2>Top Offending Videos (so far)</h2>
 			<p>
 				These are the top offending videos so far found on YouTube. To help out the cause of mapping the YouTube watch time, install the Chrome Extension here or calculate more videos on this site.
 			</p>

@@ -54,3 +54,21 @@
     display: flex;
     direction: row;
 }
+
+.video-stats-container {
+    display: inline-block;
+    width: 50%;
+}
+
+.video-player-container {
+    display: inline-block;
+    width: 50%;
+    height: 300px;
+
+    .react-player video {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+    }
+}

@@ -6,34 +6,41 @@ import { YouTubeUrlInputValidator } from '../../domain/urlValidator';
 import { OpportunityCostApiProxy } from '../../domain/opportunityCostApiProxy';
 import ResultsView from '../../components/resultsView';
 import { useLoading, Audio } from '@agney/react-loading';
+import { useSearchParams } from "react-router-dom";
 
 function HomePage(props) {
+	const [firstPageLoad, setFirstPageLoad] = useState(true);
 	const [resultsLoaded, setResultsLoaded] = useState(false);
 	const [loadedViaUrl, setLoadedViaUrl] = useState(false);
 	const [resultsData, setResultsData] = useState(null);
 	const [videoId, setVideoId] = useState(null);
 	const [initialInputValue, setInitialInputValue] = useState(undefined);
-	const search = useLocation().search;
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
-		const videoId = new URLSearchParams(search).get('v');
+		const videoId = searchParams.get('v');
 
-		if (videoId && videoId.length > 0) {
+		if (videoId && videoId.length > 0 && firstPageLoad) {
 			setVideoId(videoId);
 			setLoadedViaUrl(true);
+			setFirstPageLoad(false);
 			const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 			setInitialInputValue(videoUrl);
-			onSuccessfulSubmit(videoUrl);
+			onSuccessfulSubmit(videoUrl, false);
 		}
-	}, [search]);
+	}, []);
 
-	const onSuccessfulSubmit = (videoUrl) => {
+	const onSuccessfulSubmit = (videoUrl, manual = true) => {
 		const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(videoUrl);
 		OpportunityCostApiProxy.getMetadata(videoId, (data) => {
 			console.log(data);
 			setResultsData(data);
 			setVideoId(videoId);
 			setResultsLoaded(true);
+
+			if (manual) {
+				setSearchParams({v: videoId});
+			}
 		}, (error) => {
 			alert(error);
 		});

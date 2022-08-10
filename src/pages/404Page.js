@@ -1,6 +1,6 @@
 function NotFoundPage(props) {
 	return (
-		<div>
+		<div className="site-page-container">
 			404 Not Found
 		</div>
 	);

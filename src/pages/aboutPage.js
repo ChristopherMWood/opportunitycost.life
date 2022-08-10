@@ -1,6 +1,6 @@
 function AboutPage(props) {
 	return (
-		<div>
+		<div className="site-page-container">
 			About
 		</div>
 	);

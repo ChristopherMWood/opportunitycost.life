@@ -2,4 +2,20 @@
 	.site-page-container {
 		// background-color: orange;
 	}
+
+	.stylized-input {
+		.form__group {
+			display: block;
+			width: 80% !important;
+			margin-bottom: 10px;
+		}
+
+		.stylized-button {
+			display: block;
+			
+			button {
+				width: 80%;
+			}
+		}
+	}
 }

@@ -34,6 +34,7 @@ function ResultsView(props) {
 	const getCostBlockComponents = (formattedTime) => {
 		const costBlocks = [];
 
+		//ADD KEY TO ALL REACT ELEMENTS BEING GENERATED HERE
 		costBlocks.push(costBlock(props.data.formattedTime.centuries, 'Century', 'Centuries'));
 		costBlocks.push(costBlock(props.data.formattedTime.decades, 'Decade', 'Decades'));
 		costBlocks.push(costBlock(props.data.formattedTime.years, 'Year', 'Years'));
@@ -56,17 +57,26 @@ function ResultsView(props) {
 
 	return (
 		<div className='results-container'>
-			<h2>Title: Placeholder Video Title Here</h2>
-			<label>Total Views: {props.data.views}</label>
-
 			<h3>Total Opportunity Cost by Time</h3>
 			<div className='opportunity-cost-block-container'>
 				{getCostBlockComponents(props.data.formattedTime)}
 			</div>
-			<h3>Depressing Stats for Fun</h3>
+			{/* <div className='video-stats-container'>
+				<label>Total Views: {props.data.views}</label>
+			</div> */}
+			{/* <div className='video-player-container'>
+				<ReactPlayer
+					className='react-player'
+					url={'https://www.youtube.com/watch?v=9mLohuOI0pA'}
+					width='100%'
+					height='100%'
+					controls={true}
+					/>
+			</div> */}
+			{/* <h3>Depressing Stats for Fun</h3>
 			<div className='opportunity-cost-block-container'>
 				{getSpecificOpportunityCosts()}
-			</div>
+			</div> */}
 		</div>
 	);
   }

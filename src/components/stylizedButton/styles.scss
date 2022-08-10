@@ -1,3 +1,8 @@
+$primary: #11998e;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
+
 .stylized-button {
 	display: inline-block;
 
@@ -13,7 +18,7 @@
 		font-family: Inter,sans-serif;
 		font-size: 16px;
 		font-weight: 600;
-		height: 39px;
+		height: 41px;
 		justify-content: center;
 		letter-spacing: -.8px;
 		line-height: 24px;
@@ -26,6 +31,10 @@
 		user-select: none;
 		-webkit-user-select: none;
 		touch-action: manipulation;
+
+		border-width: 3px;
+		border-image: linear-gradient(to right, $secondary, $primary);
+		border-image-slice: 1;
 	  }
 	  
 	  .button-59:focus {
@@ -33,12 +42,6 @@
 	  }
 	  
 	  .button-59:hover {
-		border-color: #06f;
-		color: #06f;
-		fill: #06f;
-	  }
-	  
-	  .button-59:active {
 		border-color: #06f;
 		color: #06f;
 		fill: #06f;
