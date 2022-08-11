@@ -1,4 +1,10 @@
 import './styles.scss';
+import { Box, Stack, Container } from '@mui/system';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ReactPlayer from "react-player"
 import CountUp from 'react-countup';
 import { ParsingHelpers } from '../../domain/parsingHelpers';
@@ -64,27 +70,44 @@ function ResultsView(props) {
 
 	return (
 		<div className='results-container'>
-			<h3>{props.data.videoMeta.title}</h3>
-			<h3>Total Opportunity Cost by Time</h3>
-			<div className='opportunity-cost-block-container'>
-				{getCostBlockComponents(props.data.videoMeta.opportunityCost)}
-			</div>
-			{/* <div className='video-stats-container'>
-				<label>Total Views: {props.data.views}</label>
-			</div> */}
-			{/* <div className='video-player-container'>
-				<ReactPlayer
-					className='react-player'
-					url={'https://www.youtube.com/watch?v=9mLohuOI0pA'}
-					width='100%'
-					height='100%'
-					controls={true}
-					/>
-			</div> */}
-			{/* <h3>Depressing Stats for Fun</h3>
-			<div className='opportunity-cost-block-container'>
-				{getSpecificOpportunityCosts()}
-			</div> */}
+			<Box>
+				<Stack>
+					<Container>
+						<h2>Opportunity Cost of "{props.data.videoMeta.title}"</h2>
+						<div className='opportunity-cost-block-container'>
+							{getCostBlockComponents(props.data.videoMeta.opportunityCost)}
+						</div>
+					</Container>
+					<Container>
+						<Accordion>
+							<AccordionSummary expandIcon={<ExpandMoreIcon />} >
+								<Typography>Video Details</Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<div className='video-details-container'>
+									<Typography>Title: {props.data.videoMeta.title}</Typography>
+									<Typography>Views: {props.data.videoMeta.lengthSeconds}</Typography>
+									<Typography>Views: {props.data.videoMeta.views}</Typography>
+
+									<Typography>Channel: {props.data.channelMeta.name}</Typography>
+								</div>
+								<div className='video-player-container'>
+									<ReactPlayer
+										className='react-player'
+										url={`https://www.youtube.com/watch?v=${props.data.videoMeta.id}`}
+										width='100%'
+										height='100%'
+										controls={true}
+										/>
+								</div>
+							</AccordionDetails>
+						</Accordion>
+					</Container>
+					<Container>
+						<h2>Depressing Stats for Fun</h2>
+					</Container>
+				</Stack>
+			</Box>
 		</div>
 	);
   }

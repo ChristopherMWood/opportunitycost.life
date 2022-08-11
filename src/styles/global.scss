@@ -1,5 +1,43 @@
-@import url("./variables.scss");
-@import url("./layouts/all.scss");
-@import url("./layouts/mobile.scss");
-@import url("./layouts/tablet.scss");
-@import url("./layouts/desktop.scss");
+@import "./variables.scss";
+@import "./layouts/all.scss";
+@import "./layouts/mobile.scss";
+@import "./layouts/tablet.scss";
+@import "./layouts/desktop.scss";
+
+html {
+  background-color: black;
+}
+
+.App {
+	text-align: center;
+}
+
+body {
+  color: white;
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: $background-color;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/*
+	Media query templates
+
+	@media only screen and (min-width: $desktop-min-width){
+		//For Desktop Styles
+	}
+
+	@media only screen and (min-width : $tablet-min-width) and (max-width : $tablet-max-width) {
+		//For Tablet Styles
+	}
+
+	@media only screen and (max-width : $mobile-max-width) {
+		//For mobile Styles
+	}
+*/
