@@ -27,6 +27,9 @@ class ParsingHelpers {
 	static getTimeFromTotalSeconds(seconds) {
 		let time = {}
 
+		time.millennium = Math.floor(seconds / 31557600000)
+		seconds -= time.millennium * 31557600000
+
 		time.centuries = Math.floor(seconds / 3155760000)
 		seconds -= time.centuries * 3155760000
 

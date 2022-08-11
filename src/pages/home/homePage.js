@@ -5,7 +5,6 @@ import './styles.scss';
 import { YouTubeUrlInputValidator } from '../../domain/urlValidator';
 import { OpportunityCostApiProxy } from '../../domain/opportunityCostApiProxy';
 import ResultsView from '../../components/resultsView';
-import { useLoading, Audio } from '@agney/react-loading';
 import { useSearchParams } from "react-router-dom";
 
 function HomePage(props) {
@@ -14,7 +13,7 @@ function HomePage(props) {
 	const [loadedViaUrl, setLoadedViaUrl] = useState(false);
 	const [resultsData, setResultsData] = useState(null);
 	const [videoId, setVideoId] = useState(null);
-	const [initialInputValue, setInitialInputValue] = useState(undefined);
+	const [initialInputValue, setInitialInputValue] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
@@ -29,6 +28,12 @@ function HomePage(props) {
 			onSuccessfulSubmit(videoUrl, false);
 		}
 	}, []);
+
+	const onResultsReset = (event) => {
+		setResultsLoaded(false);
+		setResultsData(null);
+		setInitialInputValue('');
+	}
 
 	const onSuccessfulSubmit = (videoUrl, manual = true) => {
 		const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(videoUrl);
@@ -70,7 +75,7 @@ function HomePage(props) {
 				</p>
 			</div>
 			{resultsLoaded &&
-				<ResultsView data={resultsData} videoId={videoId} />
+				<ResultsView data={resultsData} videoId={videoId} onReset={onResultsReset} />
 			}
 		</div>
 	);

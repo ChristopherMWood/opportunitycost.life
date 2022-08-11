@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Box, Stack, Container } from '@mui/system';
 import StylizedButton from '../stylizedButton';
+
 import './styles.scss';
 
 function StylizedInput(props) {

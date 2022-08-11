@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@agney/react-loading": "^0.1.2",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
@@ -11,7 +10,9 @@
     "@mui/x-data-grid": "^5.15.2",
     "axios": "^0.27.2",
     "create-react-app": "^5.0.1",
+    "js-abbreviation-number": "^1.4.0",
     "react": "^18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-countup": "^6.3.0",
     "react-dom": "^18.2.0",
     "react-native": "^0.69.4",
