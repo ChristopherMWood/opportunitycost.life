@@ -5,7 +5,7 @@ import { OpportunityCostApiProxy } from '../../domain/opportunityCostApiProxy';
 import Box from '@mui/material/Box';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-function TopVideosPage(props) {
+function TopChannelsPage(props) {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -16,7 +16,7 @@ function TopVideosPage(props) {
 
   const loadMoreResults = () => {
     const pageSize = 20
-    OpportunityCostApiProxy.getTopVideos(page, pageSize, (pagedResults) => {
+    OpportunityCostApiProxy.getTopChannels(page, pageSize, (pagedResults) => {
       setResults([...results, ...pagedResults])
       setPage(page + 1);
 
@@ -29,10 +29,10 @@ function TopVideosPage(props) {
   }
 
 	return (
-		<div className='site-page-container top-videos-page'>
-			<h2>Top Offending Videos (so far)</h2>
+		<div className='site-page-container top-channels-page'>
+			<h2>Top Offending Channels (so far)</h2>
 			<p>
-				These are the top offending videos so far found on YouTube. To help out the cause of mapping the YouTube watch time, install the Chrome Extension here or calculate more videos on this site.
+				These are the top offending channels so far found on YouTube. To help out the cause of mapping the YouTube watch time, install the Chrome Extension here or calculate more videos on this site.
 			</p>
 			<Box sx={{ height: 500, width: '75%' }}>
         <InfiniteScroll
@@ -49,7 +49,7 @@ function TopVideosPage(props) {
             {results.map((result, index) => (
               <div key={index}>
                 {index + 1}
-                {result.title}
+                {result.name}
                 {result.opportunityCost}
               </div>
             ))}
@@ -59,4 +59,4 @@ function TopVideosPage(props) {
 	);
   }
   
-  export default TopVideosPage;
+  export default TopChannelsPage;

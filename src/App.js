@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import HomePage from './pages/home/homePage';
 import TopVideosPage from './pages/topVideos/topVideosPage';
-import TopChannelsPage from './pages/topChannelsPage';
+import TopChannelsPage from './pages/topChannels/topChannelsPage';
 import AboutPage from './pages/aboutPage';
 import NotFoundPage from './pages/404Page';
 import GlobalHeader from './components/globalHeader';
