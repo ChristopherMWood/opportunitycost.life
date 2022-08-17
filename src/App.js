@@ -6,14 +6,14 @@ import {
   Route,
 } from "react-router-dom";
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import AppMenu from './components/appMenu';
 
 import HomePage from './pages/home/homePage';
 import TopVideosPage from './pages/topVideos/topVideosPage';
 import TopChannelsPage from './pages/topChannels/topChannelsPage';
-import AboutPage from './pages/aboutPage';
-import NotFoundPage from './pages/404Page';
+import TotalCostPage from './pages/totalCost/totalCostPage';
+import AboutPage from './pages/about/aboutPage';
+import NotFoundPage from './pages/404/404Page';
 import GlobalHeader from './components/globalHeader';
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="top-videos" element={<TopVideosPage />} />
           <Route path="top-channels" element={<TopChannelsPage />} />
+          <Route path="/total-cost" element={<TotalCostPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
