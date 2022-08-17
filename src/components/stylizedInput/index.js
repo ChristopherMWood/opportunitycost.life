@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Stack, Container } from '@mui/system';
 import StylizedButton from '../stylizedButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import './styles.scss';
 
@@ -9,8 +10,8 @@ function StylizedInput(props) {
 	const [errorText, setErrorText] = useState(undefined);
 
 	useEffect(() => {
-		setInput(props.initialValue);
-	}, [props.initialValue]);
+		setInput(props.startValue);
+	}, [props.startValue]);
 
 	const updateInput = (event) => {
 		setInput(event.target.value);
@@ -34,7 +35,9 @@ function StylizedInput(props) {
 					<input value={input} type="input" className="form__field" onChange={updateInput} placeholder={props.placeholderText} name="youtube-url" id='youtube-url' />
 					<label htmlFor="youtube-url" className="form__label">{props.placeholderText}</label>
 				</div>
-				<StylizedButton buttonText="Calculate" />
+				<div className='stylized-button'>
+					<LoadingButton type="submit" className='button-59' loading={props.loading}>Calculate</LoadingButton>
+				</div>
 			</form>
 			<label className='error-text' hidden={!errorText}>{errorText}</label>
 		</div>

@@ -1,19 +1,23 @@
 import StylizedInput from '../../components/stylizedInput';
 import React, { useState, useEffect } from 'react';
 import {useLocation} from "react-router-dom";
+import { Stack, Box, Container} from '@mui/system';
 import './styles.scss';
 import { YouTubeUrlInputValidator } from '../../domain/urlValidator';
 import { OpportunityCostApiProxy } from '../../domain/opportunityCostApiProxy';
 import ResultsView from '../../components/resultsView';
 import { useSearchParams } from "react-router-dom";
+import Typography from '@mui/material/Typography';
+import CollapsibleView from '../../components/collapsibleView/collapsibleView';
 
 function HomePage(props) {
 	const [firstPageLoad, setFirstPageLoad] = useState(true);
+	const [loading, setLoading] = useState(false);
 	const [resultsLoaded, setResultsLoaded] = useState(false);
 	const [loadedViaUrl, setLoadedViaUrl] = useState(false);
 	const [resultsData, setResultsData] = useState(null);
 	const [videoId, setVideoId] = useState(null);
-	const [initialInputValue, setInitialInputValue] = useState('');
+	const [inputValue, setInputValue] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
@@ -24,7 +28,7 @@ function HomePage(props) {
 			setLoadedViaUrl(true);
 			setFirstPageLoad(false);
 			const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-			setInitialInputValue(videoUrl);
+			setInputValue(videoUrl);
 			onSuccessfulSubmit(videoUrl, false);
 		}
 	}, []);
@@ -32,15 +36,18 @@ function HomePage(props) {
 	const onResultsReset = (event) => {
 		setResultsLoaded(false);
 		setResultsData(null);
-		setInitialInputValue('');
+		setInputValue('');
 	}
 
 	const onSuccessfulSubmit = (videoUrl, manual = true) => {
+		setLoading(true);
+
 		const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(videoUrl);
 		OpportunityCostApiProxy.getMetadata(videoId, (data) => {
 			setResultsData(data);
 			setVideoId(videoId);
 			setResultsLoaded(true);
+			setLoading(false);
 
 			if (manual) {
 				setSearchParams({v: videoId});
@@ -60,24 +67,27 @@ function HomePage(props) {
 	}
 
 	return (
-		<div className='site-page-container home-page-container'>
-			<div className={resultsLoaded ? "collapsable collapsed" : "collapsable"} hidden={loadedViaUrl}>
-				<h1>YouTube Opportunity Cost Calculator</h1>
-			</div>
-			<div className='input-container'>
-				<StylizedInput initialValue={initialInputValue} placeholderText="Enter YouTube URL" onSuccess={onSuccessfulSubmit} inputValidator={validateYouTubeUrlInput}/>
-			</div>
-			<div className={resultsLoaded ? "collapsable collapsed" : "collapsable"} hidden={loadedViaUrl}>
-				<p className="definition">
-					<b>opportunity cost (noun)</b> - 
-					<br /><b>1.</b> The cost of an opportunity forgone (and the loss of the benefits that could be received from that opportunity); the most valuable forgone alternative.
-					<br /><b>2.</b> cost in terms of foregoing alternatives
-				</p>
-			</div>
+		<Stack id="home-page-container" className="site-page-container" spacing={0}>
+			<CollapsibleView animate={true} isVisible={!resultsLoaded} startWithAnimation={false}>				
+				<Typography variant="h3" gutterBottom component="div">
+					YouTube Opportunity Cost Calculator
+				</Typography>
+			</CollapsibleView>
+			{/* LOADING SPINNER NOT VISIBLE */}
+			<StylizedInput placeholderText="Enter YouTube URL" startValue={inputValue} loading={loading} onSuccess={onSuccessfulSubmit} inputValidator={validateYouTubeUrlInput}/>
+			<CollapsibleView animate={true} isVisible={!resultsLoaded} startWithAnimation={false}>				
+				<Typography variant='body1'>
+					opportunity cost (noun) -
+					<br /><b>1.</b>
+					The cost of an opportunity forgone (and the loss of the benefits that could be received from that opportunity); the most valuable forgone alternative.
+					<br /><b>2.</b>
+					cost in terms of foregoing alternatives
+				</Typography>
+			</CollapsibleView>
 			{resultsLoaded &&
 				<ResultsView data={resultsData} videoId={videoId} onReset={onResultsReset} />
 			}
-		</div>
+		</Stack>
 	);
   }
   
