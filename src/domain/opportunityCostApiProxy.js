@@ -1,10 +1,20 @@
 import axios from 'axios'
 
-// const baseUrl = "https://api.christopherwood.dev";
-const baseUrl = "http://localhost:8080";
-
+const baseUrl = "https://api.christopherwood.dev";
+// const baseUrl = "http://localhost:8080";
 
 class OpportunityCostApiProxy {
+	static getOverview(success, failure) {
+		const requestUrl = `${baseUrl}/api/opportunitycost/overview`;
+		axios.get(requestUrl)
+			.then(function (response) {
+				success(response.data)
+			})
+			.catch(function (error) {
+				failure(error)
+			})
+	}
+
 	static getMetadata(videoId, success, failure) {
 		const requestUrl = `${baseUrl}/api/opportunitycost/${videoId}`;
 		axios.get(requestUrl)

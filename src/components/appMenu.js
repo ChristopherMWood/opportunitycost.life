@@ -14,7 +14,7 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import { useNavigate } from "react-router-dom";
 
 const primaryMenuOptions = [
-  { text: "Home", linkTo: "/", icon: <CottageIcon sx={{ color: "white" }} /> },
+  { text: "Home", linkTo: "/", isInternal: true, icon: <CottageIcon sx={{ color: "white" }} /> },
   { text: "Top Videos", linkTo: "/top-videos", isInternal: true, icon: <VideocamIcon sx={{ color: "white" }} /> },
   { text: "Top Channels", linkTo: "/top-channels", isInternal: true, icon: <VideoLibraryIcon sx={{ color: "white" }} /> },
   { text: "Total Cost", linkTo: "/total-cost", isInternal: true, icon: <HikingIcon sx={{ color: "white" }} /> },

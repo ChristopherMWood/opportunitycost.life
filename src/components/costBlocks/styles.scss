@@ -1,0 +1,30 @@
+.opportunity-cost-block-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cost-block {
+    border-bottom: solid 2px white;
+    width: 100px;
+    padding-bottom: 15px;
+    display: flex; 
+    margin: 10px;
+    flex-direction: column;
+
+    label {
+        display: block;
+        text-align: center;
+    }
+
+    .cost-value {
+        font-weight: bolder;
+        font-size: xxx-large;
+    }
+
+    .cost-unit {
+
+    }
+}
