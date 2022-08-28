@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  color: white;
+  color: $text-color;
   max-width: 1920px;
   min-height: 100vh;
   margin: 0 auto;
@@ -29,7 +29,7 @@ body {
 .app-drawer {
   background-color: blueviolet;
   height: 100%;
-  color: white;
+  color: $text-color;
 }
 /*
 	Media query templates

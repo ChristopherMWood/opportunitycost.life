@@ -1,4 +1,4 @@
-import StylizedInput from '../../components/stylizedInput';
+import SingleFieldInputForm from '../../components/singleFieldInputForm';
 import React, { useState, useEffect } from 'react';
 import {useLocation} from "react-router-dom";
 import { Stack, Box, Container} from '@mui/system';
@@ -17,7 +17,7 @@ function HomePage(props) {
 	const [loadedViaUrl, setLoadedViaUrl] = useState(false);
 	const [resultsData, setResultsData] = useState(null);
 	const [videoId, setVideoId] = useState(null);
-	const [inputValue, setInputValue] = useState('');
+	const [urlInputValue, setUrlInputValue] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
@@ -28,18 +28,18 @@ function HomePage(props) {
 			setLoadedViaUrl(true);
 			setFirstPageLoad(false);
 			const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-			setInputValue(videoUrl);
-			onSuccessfulSubmit(videoUrl, false);
+			setUrlInputValue(videoUrl);
+			onYouTubeUrlSubmit(videoUrl, false);
 		}
 	}, []);
 
 	const onResultsReset = (event) => {
 		setResultsLoaded(false);
 		setResultsData(null);
-		setInputValue('');
+		setUrlInputValue('');
 	}
 
-	const onSuccessfulSubmit = (videoUrl, manual = true) => {
+	const onYouTubeUrlSubmit = (videoUrl, manual = true) => {
 		setLoading(true);
 
 		const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(videoUrl);
@@ -60,10 +60,15 @@ function HomePage(props) {
 	const validateYouTubeUrlInput = (inputValue) => {
 		if (YouTubeUrlInputValidator.isValidHttpUrl(inputValue)){
 			const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(inputValue);
-			return videoId !== undefined && videoId !== null && videoId.length > 0;
+			const isValid = videoId !== undefined && videoId !== null && videoId.length > 0;
+			if (isValid) {
+				return ''
+			} else {
+				return 'Must be a YouTube video URL'
+			}
 		}
 
-		return false;
+		return 'Must be a valid url';
 	}
 
 	return (
@@ -73,8 +78,15 @@ function HomePage(props) {
 					YouTube Opportunity Cost Calculator
 				</Typography>
 			</CollapsibleView>
-			{/* LOADING SPINNER NOT VISIBLE */}
-			<StylizedInput placeholderText="Enter YouTube URL" startValue={inputValue} loading={loading} onSuccess={onSuccessfulSubmit} inputValidator={validateYouTubeUrlInput}/>
+
+			<SingleFieldInputForm 
+				inputLabel="Youtube URL" 
+				buttonText="Calculate"
+				startValue={urlInputValue}
+				loading={loading}
+				onSubmit={onYouTubeUrlSubmit}
+				onValidate={validateYouTubeUrlInput}/>
+			
 			<CollapsibleView animate={true} isVisible={!resultsLoaded} startWithAnimation={false}>				
 				<Typography variant='body1'>
 					opportunity cost (noun) -
