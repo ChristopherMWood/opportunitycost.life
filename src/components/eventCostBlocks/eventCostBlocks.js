@@ -7,6 +7,7 @@ import HotelIcon from '@mui/icons-material/Hotel';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 import { abbreviateNumber } from "js-abbreviation-number";
+import { CostInSeconds } from '../../domain/costTypes';
 import './styles.scss';
 
 const iconFontSize = 60;
@@ -14,32 +15,32 @@ const iconFontSize = 60;
 const specificOpportunityCosts = [{ 
 		name: 'Human Lives',
 		icon: <EmojiPeopleIcon sx={{ fontSize: iconFontSize }} />,
-		costPer: 2310016320, 
+		costPer: CostInSeconds.AverageHumanLife, 
 		description: 'The average human lifespan across the world is 72.3 years old.'
 	}, { 
 		name: 'Bachelor Degrees',
 		icon: <SchoolIcon sx={{ fontSize: iconFontSize }} />,
-		costPer: 126230400, 
+		costPer: CostInSeconds.BachelorDegree, 
 		description: 'This is the total number of 4 year Bachelor degrees that could have been earned.' 
 	}, { 
 		name: 'Pregnancies',
 		icon: <PregnantWomanIcon sx={{ fontSize: iconFontSize }} />,
-		costPer: 23668200, 
+		costPer: CostInSeconds.Pregnancy, 
 		description: 'Total children that could have been conceived and birthed in 9 months.' 
 	}, { 
 		name: 'Weekends',
 		icon: <WeekendIcon sx={{ fontSize: iconFontSize }} />,
-		costPer: 172800, 
+		costPer: CostInSeconds.Weekend, 
 		description: 'The number of full two day, Saturday and Sunday, weekends. Why spend time with Friends and Family when you can just watch YouTube?'
 	}, { 
 		name: 'Full Nights of Sleep',
 		icon: <HotelIcon sx={{ fontSize: iconFontSize }} />,
-		costPer: 28800, 
+		costPer: CostInSeconds.NightOfSleep, 
 		description: 'The total number of full 8 hour nights of sleep. '
 	}, { 
 		name: 'Football Games',
 		icon: <SportsFootballIcon sx={{ fontSize: iconFontSize }} />,
-		costPer: 10800, 
+		costPer: CostInSeconds.FootballGame, 
 		description: 'Did you know the average game of American Football is 3 hours long? Because I didn\'t until writing this.'
 	},
 ];

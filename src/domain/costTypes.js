@@ -1,17 +1,17 @@
 export const CostTypes = {
-	HumanLives: 'Human Lives',
-	BachelorDegrees: 'Bachelor Degrees',
-	Pregnancies: 'Pregnancies',
-	Weekends: 'Weekends',
-	NightsOfSleep: 'Full Nights of Sleep',
-	FootballGames: 'Football Games'
+	HumanLives: 'Human Lives (72.3 Years)',
+	BachelorDegrees: 'Bachelor Degrees (4 Years)',
+	Pregnancies: 'Pregnancies (9 Months)',
+	Weekends: 'Weekends (60 Hours)',
+	NightsOfSleep: 'Full Nights of Sleep (8 Hours)',
+	FootballGames: 'Football Games (3 Hours)'
 }
 
 export const CostInSeconds = {
 	AverageHumanLife: 2310016320,
 	BachelorDegree: 126230400,
 	Pregnancy: 23668200,
-	Weekend: 172800,
+	Weekend: 216000,
 	NightOfSleep: 28800,
 	FootballGame: 10800
 }

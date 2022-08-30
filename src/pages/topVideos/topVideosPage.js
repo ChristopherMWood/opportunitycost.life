@@ -2,7 +2,8 @@ import './styles.scss';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { OpportunityCostApiProxy } from '../../domain/opportunityCostApiProxy';
-import { Stack, Box, Container} from '@mui/system';
+import { Stack, Container} from '@mui/system';
+import Typography from '@mui/material/Typography';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { abbreviateNumber } from "js-abbreviation-number";
@@ -75,57 +76,58 @@ function TopVideosPage(props) {
 
 	return (
 		<div className='site-page-container top-videos-page'>
-      <Stack spacing={3}>
-			<h2>Top Offending Videos (so far)</h2>
-      <FormControl fullWidth style={{width: '50%', margin: '0 auto'}}>
-        <InputLabel id="demo-simple-select-label">Cost Type</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={costType}
-          label="Cost Type"
-          onChange={onCostTypeSelected}
-        >
-          {
-            Object.values(CostTypes).map((type, index) => {
-              return <MenuItem value={type}>{type}</MenuItem>
-            })
-          }
-        </Select>
-      </FormControl>
-
-      <TableContainer component={Paper}>
-        <InfiniteScroll
-          dataLength={results.length}
-          next={loadMoreResults}
-          hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-          <p style={{ textAlign: "center" }}>
-          <b>End of the top 100 has been reached</b>
-          </p>
-          }
-        >
-          <Table aria-label="simple table" size="large">
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">#</TableCell>
-                <TableCell align="left">Title</TableCell>
-                <TableCell align="center">Cost</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-            {results.map((result, index) => (
-              <TableRow key={index}>
-                <TableCell align="left">{index + 1}</TableCell>
-                <TableCell align="left" ><a href={"/?v=" + result._id}>{result.title}</a></TableCell>
-                <TableCell align="center">{result.costByType}</TableCell>
-              </TableRow>
-            ))}
-            </TableBody>
-          </Table>
-        </InfiniteScroll>
-      </TableContainer>
+      <Stack direction="column" spacing={3}>
+        <Typography variant="h4">Top Offending Videos (so far)</Typography>
+        <Container>
+          <FormControl className="cost-type-dropdown-container" fullWidth>
+            <InputLabel id="demo-simple-select-label">Cost Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={costType}
+              label="Cost Type"
+              onChange={onCostTypeSelected}
+            >
+              {
+                Object.values(CostTypes).map((type, index) => {
+                  return <MenuItem value={type}>{type}</MenuItem>
+                })
+              }
+            </Select>
+          </FormControl>
+        </Container>
+        <TableContainer component={Paper}>
+          <InfiniteScroll
+            dataLength={results.length}
+            next={loadMoreResults}
+            hasMore={hasMore}
+            loader={<h4>Loading...</h4>}
+            endMessage={
+            <p style={{ textAlign: "center" }}>
+            <b>End of the top 100 has been reached</b>
+            </p>
+            }
+          >
+            <Table aria-label="simple table" size="large">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center"><b>#</b></TableCell>
+                  <TableCell align="left"><b>Title</b></TableCell>
+                  <TableCell align="center"><b>Cost</b></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+              {results.map((result, index) => (
+                <TableRow key={index}>
+                  <TableCell align="left">{index + 1}</TableCell>
+                  <TableCell align="left" ><a href={"/?v=" + result._id}>{result.title}</a></TableCell>
+                  <TableCell align="center">{result.costByType}</TableCell>
+                </TableRow>
+              ))}
+              </TableBody>
+            </Table>
+          </InfiniteScroll>
+        </TableContainer>
       </Stack>
     </div>
   )
