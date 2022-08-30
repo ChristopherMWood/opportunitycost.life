@@ -20,17 +20,25 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import CostByTypeMap, {CostTypes} from '../../domain/costTypes';
+
 function TopVideosPage(props) {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
+  const [costType, setCostType] = useState(Object.values(CostTypes)[0])
 
   useEffect(() => {
     loadMoreResults()
   }, [])
 
   const getOpportunityCostByType = (totalSeconds, opportunityCostType) => {
-    return abbreviateNumber(totalSeconds/22075000); //CHANGE ASAP
+    let secondsOfType = CostByTypeMap[opportunityCostType];
+    const calc = totalSeconds/secondsOfType;
+    console.log(opportunityCostType)
+
+	  const roundedCostValue = Math.floor(calc);
+    return abbreviateNumber(roundedCostValue);
   }
 
   const loadMoreResults = () => {
@@ -38,7 +46,8 @@ function TopVideosPage(props) {
     OpportunityCostApiProxy.getTopVideos(page, pageSize, (pagedResults) => {
       let newResultsList = [...results, ...pagedResults]
       newResultsList.map((result) => {
-        result.costByType = getOpportunityCostByType(result.opportunityCost, 'life')
+        result.costByType = getOpportunityCostByType(result.opportunityCost, costType)
+        return result;
       });
 
       setResults(newResultsList)
@@ -53,65 +62,71 @@ function TopVideosPage(props) {
   }
 
   const onCostTypeSelected = (event) => {
+    setCostType(event.target.value)
 
+    const resultsCopy = [...results]
+    resultsCopy.map((result, index) => {
+      result.costByType = getOpportunityCostByType(result.opportunityCost, event.target.value);
+      return result;
+    })
+
+    setResults(resultsCopy)
   }
 
 	return (
 		<div className='site-page-container top-videos-page'>
+      <Stack spacing={3}>
 			<h2>Top Offending Videos (so far)</h2>
-			<p>
-				These are the top offending videos so far found on YouTube. To help out the cause of mapping the YouTube watch time, calculate more videos on this site.
-			</p>
-
-      {/* PUT drop down to toggle cost calculation here */}
-      <FormControl fullWidth>
+      <FormControl fullWidth style={{width: '50%', margin: '0 auto'}}>
         <InputLabel id="demo-simple-select-label">Cost Type</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={0}
+          value={costType}
           label="Cost Type"
           onChange={onCostTypeSelected}
         >
-          <MenuItem value={0}>Human Lives</MenuItem>
-          <MenuItem value={1}>Football Games</MenuItem>
+          {
+            Object.values(CostTypes).map((type, index) => {
+              return <MenuItem value={type}>{type}</MenuItem>
+            })
+          }
         </Select>
       </FormControl>
 
-
       <TableContainer component={Paper}>
-
-      <InfiniteScroll
+        <InfiniteScroll
           dataLength={results.length}
           next={loadMoreResults}
           hasMore={hasMore}
           loader={<h4>Loading...</h4>}
           endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>End of the top 100 has been reached</b>
-            </p>
+          <p style={{ textAlign: "center" }}>
+          <b>End of the top 100 has been reached</b>
+          </p>
           }
-          >
+        >
           <Table aria-label="simple table" size="large">
             <TableHead>
-            <TableRow>
-              <TableCell align="center">#</TableCell>
-              <TableCell align="left">Title</TableCell>
-              <TableCell align="center">Cost</TableCell>
-            </TableRow>
-          </TableHead>
+              <TableRow>
+                <TableCell align="center">#</TableCell>
+                <TableCell align="left">Title</TableCell>
+                <TableCell align="center">Cost</TableCell>
+              </TableRow>
+            </TableHead>
             <TableBody>
-                  {results.map((result, index) => (
-                    <TableRow key={index}>
-                      <TableCell align="left">{index + 1}</TableCell>
-                      <TableCell align="left" ><a href={"/?v=" + result._id}>{result.title}</a></TableCell>
-                      <TableCell align="center">{result.opportunityCost}</TableCell>
-                    </TableRow>
-                  ))}
+            {results.map((result, index) => (
+              <TableRow key={index}>
+                <TableCell align="left">{index + 1}</TableCell>
+                <TableCell align="left" ><a href={"/?v=" + result._id}>{result.title}</a></TableCell>
+                <TableCell align="center">{result.costByType}</TableCell>
+              </TableRow>
+            ))}
             </TableBody>
           </Table>
-         </InfiniteScroll>
+        </InfiniteScroll>
       </TableContainer>
+      </Stack>
     </div>
   )
 }
