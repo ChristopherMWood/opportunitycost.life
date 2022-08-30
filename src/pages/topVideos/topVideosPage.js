@@ -20,10 +20,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useTheme } from '@mui/material/styles';
 
 import CostByTypeMap, {CostTypes} from '../../domain/costTypes';
 
 function TopVideosPage(props) {
+  const theme = useTheme();
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -79,11 +81,9 @@ function TopVideosPage(props) {
       <Stack direction="column" spacing={3}>
         <Typography variant="h4">Top Offending Videos (so far)</Typography>
         <Container>
-          <FormControl className="cost-type-dropdown-container" fullWidth>
-            <InputLabel id="demo-simple-select-label">Cost Type</InputLabel>
+          <FormControl color="primary" className="cost-type-dropdown-container" fullWidth>
+            <InputLabel>Cost Type</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
               value={costType}
               label="Cost Type"
               onChange={onCostTypeSelected}
