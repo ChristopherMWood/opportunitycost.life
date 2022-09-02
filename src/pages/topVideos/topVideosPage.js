@@ -79,9 +79,9 @@ function TopVideosPage(props) {
 	return (
 		<div className='site-page-container top-videos-page'>
       <Stack direction="column" spacing={3}>
-        <Typography variant="h4">Top Offending Videos (so far)</Typography>
-        <Container>
-          <FormControl color="primary" className="cost-type-dropdown-container" fullWidth>
+        <Typography variant="h4" align='center'>Top Offending Videos (so far)</Typography>
+        <Container sx={{ borderColor: 'primary.main' }}>
+          <FormControl className="cost-type-dropdown-container" fullWidth>
             <InputLabel>Cost Type</InputLabel>
             <Select
               value={costType}

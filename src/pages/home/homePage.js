@@ -72,9 +72,12 @@ function HomePage(props) {
 	}
 
 	return (
-		<Stack id="home-page-container" className="site-page-container" spacing={0}>
+		<Stack 
+			id="home-page-container"
+			className="site-page-container" 
+			spacing={2}>
 			<CollapsibleView animate={true} isVisible={!resultsLoaded} startWithAnimation={false}>				
-				<Typography variant="h3" gutterBottom component="div">
+				<Typography variant="h3" align='center' component="div">
 					YouTube Opportunity Cost Calculator
 				</Typography>
 			</CollapsibleView>
@@ -88,13 +91,15 @@ function HomePage(props) {
 				onValidate={validateYouTubeUrlInput}/>
 			
 			<CollapsibleView animate={true} isVisible={!resultsLoaded} startWithAnimation={false}>				
-				<Typography variant='body1'>
-					opportunity cost (noun) -
-					<br /><b>1.</b>
-					The cost of an opportunity forgone (and the loss of the benefits that could be received from that opportunity); the most valuable forgone alternative.
-					<br /><b>2.</b>
-					cost in terms of foregoing alternatives
-				</Typography>
+				<Container maxWidth="sm">
+					<Typography variant='body1' align='center'>
+						opportunity cost (noun)
+					</Typography>
+					<Typography variant='body1' align='left'>
+						1. The cost of an opportunity forgone (and the loss of the benefits that could be received from that opportunity); the most valuable forgone alternative.
+						<br></br>2. Cost in terms of foregoing alternatives
+					</Typography>
+				</Container>
 			</CollapsibleView>
 			{resultsLoaded &&
 				<ResultsView data={resultsData} videoId={videoId} onReset={onResultsReset} />

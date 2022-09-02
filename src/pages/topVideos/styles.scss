@@ -4,3 +4,9 @@
 		min-width: 300px;
 	}
 }
+
+.MuiOutlinedInput-root {
+	.fieldset {
+	  border-color: 'red';
+	}
+}

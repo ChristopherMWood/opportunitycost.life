@@ -1,5 +1,6 @@
 import { Container } from '@mui/system';
 import CountUp from 'react-countup';
+import Typography from '@mui/material/Typography';
 import { ParsingHelpers } from '../../domain/parsingHelpers';
 import './styles.scss';
 
@@ -43,7 +44,7 @@ const CostBlocks = (props) => {
 
 	return (
 		<Container>
-			<h2>{props.title}</h2>
+			<Typography variant='h4' align='center'>{props.title}</Typography>
 			<div className='opportunity-cost-block-container'>
 				{getCostBlockComponents(props.totalSeconds)}
 			</div>

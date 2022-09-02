@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import Drawer from '@mui/material/Drawer';
 import AppMenu from './components/appMenu';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from "@mui/material/CssBaseline";
 
 import HomePage from './pages/home/homePage';
 import TopVideosPage from './pages/topVideos/topVideosPage';
@@ -16,31 +17,12 @@ import TotalCostPage from './pages/totalCost/totalCostPage';
 import AboutPage from './pages/about/aboutPage';
 import NotFoundPage from './pages/404/404Page';
 import GlobalHeader from './components/globalHeader';
-
-const theme = createTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#3f51b5',
-    },
-    secondary: {
-      main: '#f50057',
-    },
-    text: {
-      disabled: '#ffffff',
-    },
-  },
-});
-
+import { theme } from './styles/theme'
 
 function App() {
   const [siteMenuOpen, setSiteMenuOpen] = React.useState(false);
 
-  const toggleMenu = (toggleMenu) => (event) => {
-    // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-    //   return;
-    // }
-
+  const toggleMenu = (toggleMenu) => (_e) => {
     if (toggleMenu !== undefined) {
       setSiteMenuOpen(toggleMenu);
     } else {
@@ -52,6 +34,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           <GlobalHeader onMenuClick={toggleMenu(true)} />
           <Routes>
             <Route path="/" element={<HomePage />} />

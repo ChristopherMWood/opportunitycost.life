@@ -78,7 +78,7 @@ function TopChannelsPage(props) {
 	return (
 		<div className='site-page-container top-channels-page'>
       <Stack direction="column" spacing={3}>
-        <Typography variant="h4">Top Offending Channels (so far)</Typography>
+        <Typography variant="h4" align='center'>Top Offending Channels (so far)</Typography>
         <Container>
           <FormControl className="cost-type-dropdown-container" fullWidth>
             <InputLabel id="demo-simple-select-label">Cost Type</InputLabel>
