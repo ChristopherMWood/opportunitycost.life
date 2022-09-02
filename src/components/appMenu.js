@@ -14,15 +14,15 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import { useNavigate } from "react-router-dom";
 
 const primaryMenuOptions = [
-  { text: "Home", linkTo: "/", isInternal: true, icon: <CottageIcon sx={{ color: "white" }} /> },
-  { text: "Top Videos", linkTo: "/top-videos", isInternal: true, icon: <VideocamIcon sx={{ color: "white" }} /> },
-  { text: "Top Channels", linkTo: "/top-channels", isInternal: true, icon: <VideoLibraryIcon sx={{ color: "white" }} /> },
-  { text: "Total Cost", linkTo: "/total-cost", isInternal: true, icon: <HikingIcon sx={{ color: "white" }} /> },
+  { text: "Home", linkTo: "/", isInternal: true, icon: <CottageIcon sx={{ color: "icon.primary" }} /> },
+  { text: "Top Videos", linkTo: "/top-videos", isInternal: true, icon: <VideocamIcon sx={{ color: "icon.primary" }} /> },
+  { text: "Top Channels", linkTo: "/top-channels", isInternal: true, icon: <VideoLibraryIcon sx={{ color: "icon.primary" }} /> },
+  { text: "Total Cost", linkTo: "/total-cost", isInternal: true, icon: <HikingIcon sx={{ color: "icon.primary" }} /> },
 ]
 
 const secondaryMenuOptions = [
-  { text: "About", linkTo: "/about", isInternal: true, icon: <InfoIcon sx={{ color: "white" }} /> },
-  { text: "Report Bug", linkTo: "https://github.com/ChristopherMWood/opportunitycost.life/issues", isInternal: false, icon: <BugReportIcon sx={{ color: "white" }} /> }
+  { text: "About", linkTo: "/about", isInternal: true, icon: <InfoIcon sx={{ color: "icon.primary" }} /> },
+  { text: "Report Bug", linkTo: "https://github.com/ChristopherMWood/opportunitycost.life/issues", isInternal: false, icon: <BugReportIcon sx={{ color: "icon.primary" }} /> }
 ]
 
 const AppMenu = (props) => {

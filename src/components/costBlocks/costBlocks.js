@@ -14,7 +14,7 @@ const costBlock = (value, singularUnit, pluralUnit) => {
 		return (
 			<div className='cost-block' key={costBlockKey}>
 				<CountUp className='cost-value' start={0} end={value} delay={0} duration={1.5} />
-				<label className='cost-unit'>{value === 1 ? `${singularUnit}` : `${pluralUnit}`}</label>
+				<Typography className='cost-unit'>{value === 1 ? `${singularUnit}` : `${pluralUnit}`}</Typography>
 			</div>
 		);
 	}
@@ -23,12 +23,10 @@ const costBlock = (value, singularUnit, pluralUnit) => {
 };
 
 const CostBlocks = (props) => {
-
 	const getCostBlockComponents = (totalSeconds) => {
 		const costBlocks = [];
 		const formattedTime = ParsingHelpers.getTimeFromTotalSeconds(totalSeconds);
 
-		//ADD KEY TO ALL REACT ELEMENTS BEING GENERATED HERE
 		costBlocks.push(costBlock(formattedTime.millennium, 'Millennium', 'Millennia'));
 		costBlocks.push(costBlock(formattedTime.centuries, 'Century', 'Centuries'));
 		costBlocks.push(costBlock(formattedTime.decades, 'Decade', 'Decades'));

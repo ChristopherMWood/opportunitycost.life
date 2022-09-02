@@ -63,12 +63,10 @@ function HomePage(props) {
 			const isValid = videoId !== undefined && videoId !== null && videoId.length > 0;
 			if (isValid) {
 				return ''
-			} else {
-				return 'Must be a YouTube video URL'
 			}
 		}
 
-		return 'Must be a valid url';
+		return 'Must be a YouTube video URL';
 	}
 
 	return (

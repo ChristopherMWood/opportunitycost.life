@@ -10,7 +10,7 @@ function GlobalHeader(props) {
 				<a href="/" className="brand"><img id='site-logo' src={SiteIcon} alt='site logo' /></a>
 				<nav className="nav">
 					<IconButton onClick={props.onMenuClick}>
-						<MenuIcon size="large" sx={{ color: "white" }} />
+						<MenuIcon size="large" sx={{ color: "icon.primary" }} />
 					</IconButton>
 				</nav>
 			</div>

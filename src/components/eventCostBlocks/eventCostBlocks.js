@@ -14,32 +14,32 @@ const iconFontSize = 60;
   
 const specificOpportunityCosts = [{ 
 		name: 'Human Lives',
-		icon: <EmojiPeopleIcon sx={{ fontSize: iconFontSize }} />,
+		icon: <EmojiPeopleIcon sx={{ fontSize: iconFontSize, color: "icon.primary" }} />,
 		costPer: CostInSeconds.AverageHumanLife, 
 		description: 'The average human lifespan across the world is 72.3 years old.'
 	}, { 
 		name: 'Bachelor Degrees',
-		icon: <SchoolIcon sx={{ fontSize: iconFontSize }} />,
+		icon: <SchoolIcon sx={{ fontSize: iconFontSize, color: "icon.primary" }} />,
 		costPer: CostInSeconds.BachelorDegree, 
 		description: 'This is the total number of 4 year Bachelor degrees that could have been earned.' 
 	}, { 
 		name: 'Pregnancies',
-		icon: <PregnantWomanIcon sx={{ fontSize: iconFontSize }} />,
+		icon: <PregnantWomanIcon sx={{ fontSize: iconFontSize, color: "icon.primary" }} />,
 		costPer: CostInSeconds.Pregnancy, 
 		description: 'Total children that could have been conceived and birthed in 9 months.' 
 	}, { 
 		name: 'Weekends',
-		icon: <WeekendIcon sx={{ fontSize: iconFontSize }} />,
+		icon: <WeekendIcon sx={{ fontSize: iconFontSize, color: "icon.primary" }} />,
 		costPer: CostInSeconds.Weekend, 
 		description: 'The number of full two day, Saturday and Sunday, weekends. Why spend time with Friends and Family when you can just watch YouTube?'
 	}, { 
 		name: 'Full Nights of Sleep',
-		icon: <HotelIcon sx={{ fontSize: iconFontSize }} />,
+		icon: <HotelIcon sx={{ fontSize: iconFontSize, color: "icon.primary" }} />,
 		costPer: CostInSeconds.NightOfSleep, 
 		description: 'The total number of full 8 hour nights of sleep. '
 	}, { 
 		name: 'Football Games',
-		icon: <SportsFootballIcon sx={{ fontSize: iconFontSize }} />,
+		icon: <SportsFootballIcon sx={{ fontSize: iconFontSize, color: "icon.primary" }} />,
 		costPer: CostInSeconds.FootballGame, 
 		description: 'Did you know the average game of American Football is 3 hours long? Because I didn\'t until writing this.'
 	},

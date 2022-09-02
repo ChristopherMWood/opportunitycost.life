@@ -9,6 +9,9 @@ export const theme = createTheme({
 		dark: '#26306d',
 		contrastText: '#fffefe',
 	  },
+	  icon: {
+		primary: "black"
+	  },
 	  secondary: {
 		main: '#f9045b',
 		light: '#f13275',
