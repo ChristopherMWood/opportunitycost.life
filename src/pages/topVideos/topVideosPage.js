@@ -25,6 +25,7 @@ function TopChannelsPage(props) {
 
   useEffect(() => {
     loadMoreResults()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const loadMoreResults = () => {
