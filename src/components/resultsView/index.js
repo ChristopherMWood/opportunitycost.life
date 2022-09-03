@@ -1,6 +1,7 @@
 import './styles.scss';
 import React, { useState } from 'react';
 import { Box, Stack, Container } from '@mui/system';
+import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import ShareIcon from '@mui/icons-material/Share';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
@@ -55,7 +56,8 @@ function ResultsView(props) {
 							</Alert>
 						</Snackbar>
 					</Container>
-					<CostBlocks totalSeconds={props.data.videoMeta.opportunityCost} title={'Opportunity cost of "' + props.data.videoMeta.title + '"'} />
+					<Typography variant='h4' align='center'>{'Opportunity cost of "' + props.data.videoMeta.title + '"'}</Typography>
+					<CostBlocks totalSeconds={props.data.videoMeta.opportunityCost} />
 					<EventCostBlocks totalSeconds={props.data.videoMeta.opportunityCost} />
 				</Stack>
 			</Box>

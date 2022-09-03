@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from '@mui/system';
 import CountUp from 'react-countup';
 import Typography from '@mui/material/Typography';
@@ -42,7 +43,6 @@ const CostBlocks = (props) => {
 
 	return (
 		<Container>
-			<Typography variant='h4' align='center'>{props.title}</Typography>
 			<div className='opportunity-cost-block-container'>
 				{getCostBlockComponents(props.totalSeconds)}
 			</div>
@@ -50,4 +50,4 @@ const CostBlocks = (props) => {
 	)
 };
 
-export default CostBlocks;
+export default React.memo(CostBlocks);

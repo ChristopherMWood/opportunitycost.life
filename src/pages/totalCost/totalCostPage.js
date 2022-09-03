@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { OpportunityCostApiProxy } from '../../domain/opportunityCostApiProxy';
 import CostBlocks from '../../components/costBlocks/costBlocks'
+import { Typography } from '@mui/material';
 import EventCostBlocks from '../../components/eventCostBlocks/eventCostBlocks'
 import './styles.scss';
 
@@ -36,7 +37,9 @@ const TotalCostPage = () => {
 		<div className='site-page-container total-cost-page'>
 			{ totalSeconds > 0 &&
 				<>
-					<CostBlocks totalSeconds={totalSeconds} title="Opportunity Cost Of Everything So Far" />
+
+					<Typography variant='h4' align='center'>Opportunity Cost Of Everything So Far</Typography>
+					<CostBlocks totalSeconds={totalSeconds} />
 					{/* <EventCostBlocks totalSeconds={totalSeconds} /> */}
 					<Timeline position="alternate">
       <TimelineItem>
