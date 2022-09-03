@@ -1,3 +1,5 @@
-@media only screen and (min-width : 481px) and (max-width : 1024px) {
+@import '../variables.scss';
+
+@media only screen and (min-width : $tablet-min-width) and (max-width : $tablet-max-width) {
 	
 }

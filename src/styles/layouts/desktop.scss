@@ -1,4 +1,6 @@
-@media only screen and (min-width: 1025px){
+@import '../variables.scss';
+
+@media only screen and (min-width: $desktop-min-width){
 	.site-page-container {
 		margin: 0 auto;
 		width: 1024px;

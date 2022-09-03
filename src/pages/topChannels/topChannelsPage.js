@@ -29,7 +29,7 @@ function TopChannelsPage(props) {
 
   const loadMoreResults = () => {
     const pageSize = 20
-    OpportunityCostApiProxy.getTopVideos(page, pageSize, (pagedResults) => {
+    OpportunityCostApiProxy.getTopChannels(page, pageSize, (pagedResults) => {
       let newResultsList = [...results, ...pagedResults]
       newResultsList.map((result) => {
         result.costByType = getOpportunityCostByType(result.opportunityCost, costType)
@@ -60,9 +60,9 @@ function TopChannelsPage(props) {
   }
 
   return (
-    <div className='site-page-container top-videos-page'>
+    <div className='site-page-container top-channels-page'>
       <Stack direction="column" spacing={3}>
-        <Typography variant="h4" align='center'>Top Offending Videos (so far)</Typography>
+        <Typography variant="h4" align='center'>Top Offending Channels (so far)</Typography>
         <Container>
           <Dropdown startValue={costType} selectValues={Object.values(CostTypes)} onChange={onCostTypeSelected} />
         </Container>
@@ -91,7 +91,7 @@ function TopChannelsPage(props) {
                 <TableHead>
                   <TableRow>
                     <TableCell align="center"><b>#</b></TableCell>
-                    <TableCell align="left"><b>Title</b></TableCell>
+                    <TableCell align="left"><b>Name</b></TableCell>
                     <TableCell align="center"><b>Cost</b></TableCell>
                   </TableRow>
                 </TableHead>
@@ -99,7 +99,7 @@ function TopChannelsPage(props) {
                   {results.map((result, index) => (
                     <TableRow key={index}>
                       <TableCell align="left">{index + 1}</TableCell>
-                      <TableCell align="left" ><a href={"/?c=" + result._id}>{result.title}</a></TableCell>
+                      <TableCell align="left" ><a href={"/?c=" + result._id}>{result.name}</a></TableCell>
                       <TableCell align="center">{result.costByType}</TableCell>
                     </TableRow>
                   ))}

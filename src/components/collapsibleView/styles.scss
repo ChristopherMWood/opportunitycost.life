@@ -1,16 +1,11 @@
-#home-page-container {
-	> div {
-		margin-bottom: 30px;
-	}
-}
-
-.collapsable {
+.collapsible-view {
 	overflow:hidden;
 	max-height: 300px;
 	transition: max-height 2s cubic-bezier(0, 1.05, 0, 1), opacity 3s cubic-bezier(0, 1.05, 0, 1);
+	
 }
 
-.collapsable.collapsed {
+.collapsed {
 	max-height: 0px;
 	margin-bottom: 0px;
 	opacity: 0;

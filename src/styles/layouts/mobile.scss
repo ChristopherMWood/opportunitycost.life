@@ -1,4 +1,6 @@
-@media only screen and (max-width : 480px) {
+@import '../variables.scss';
+
+@media only screen and (max-width : $mobile-max-width) {
 	.site-page-container {
 		// background-color: orange;
 	}
