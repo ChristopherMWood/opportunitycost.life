@@ -15,14 +15,16 @@ function Dropdown(props) {
 				label="Cost Type"
 				onChange={props.onChange}
 			>
-				{
-					props.selectValues.map((selectValue) => {
-						return <MenuItem value={selectValue}>{selectValue}</MenuItem>
-					})
-				}
+				{props.selectValues.map((selectValue, index) => {
+					return (
+						<MenuItem key={index} value={selectValue}>
+							{selectValue}
+						</MenuItem>
+					);
+				})}
 			</Select>
 		</FormControl>
-	)
+	);
 }
 
 export default Dropdown;

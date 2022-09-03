@@ -14,8 +14,16 @@ const costBlock = (value, singularUnit, pluralUnit) => {
 
 		return (
 			<div className='cost-block' key={costBlockKey}>
-				<CountUp className='cost-value' start={0} end={value} delay={0} duration={1.5} />
-				<Typography className='cost-unit'>{value === 1 ? `${singularUnit}` : `${pluralUnit}`}</Typography>
+				<CountUp
+					className='cost-value'
+					start={0}
+					end={value}
+					delay={0}
+					duration={1.5}
+				/>
+				<Typography className='cost-unit'>
+					{value === 1 ? `${singularUnit}` : `${pluralUnit}`}
+				</Typography>
 			</div>
 		);
 	}
@@ -23,12 +31,14 @@ const costBlock = (value, singularUnit, pluralUnit) => {
 	return null;
 };
 
-const CostBlocks = (props) => {
-	const getCostBlockComponents = (totalSeconds) => {
+const CostBlocks = props => {
+	const getCostBlockComponents = totalSeconds => {
 		const costBlocks = [];
 		const formattedTime = ParsingHelpers.getTimeFromTotalSeconds(totalSeconds);
 
-		costBlocks.push(costBlock(formattedTime.millennium, 'Millennium', 'Millennia'));
+		costBlocks.push(
+			costBlock(formattedTime.millennium, 'Millennium', 'Millennia')
+		);
 		costBlocks.push(costBlock(formattedTime.centuries, 'Century', 'Centuries'));
 		costBlocks.push(costBlock(formattedTime.decades, 'Decade', 'Decades'));
 		costBlocks.push(costBlock(formattedTime.years, 'Year', 'Years'));
@@ -39,7 +49,7 @@ const CostBlocks = (props) => {
 		costBlocks.push(costBlock(formattedTime.seconds, 'Second', 'Seconds'));
 
 		return costBlocks;
-	}
+	};
 
 	return (
 		<Container>
@@ -47,7 +57,7 @@ const CostBlocks = (props) => {
 				{getCostBlockComponents(props.totalSeconds)}
 			</div>
 		</Container>
-	)
+	);
 };
 
 export default React.memo(CostBlocks);

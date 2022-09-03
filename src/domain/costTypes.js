@@ -4,8 +4,8 @@ export const CostTypes = {
 	Pregnancies: 'Pregnancies (9 Months)',
 	Weekends: 'Weekends (60 Hours)',
 	NightsOfSleep: 'Full Nights of Sleep (8 Hours)',
-	FootballGames: 'Football Games (3 Hours)'
-}
+	FootballGames: 'Football Games (3 Hours)',
+};
 
 export const CostInSeconds = {
 	AverageHumanLife: 2310016320,
@@ -13,10 +13,10 @@ export const CostInSeconds = {
 	Pregnancy: 23668200,
 	Weekend: 216000,
 	NightOfSleep: 28800,
-	FootballGame: 10800
-}
+	FootballGame: 10800,
+};
 
-const CostByTypeMap = {}
+const CostByTypeMap = {};
 CostByTypeMap[CostTypes.HumanLives] = CostInSeconds.AverageHumanLife;
 CostByTypeMap[CostTypes.BachelorDegrees] = CostInSeconds.BachelorDegree;
 CostByTypeMap[CostTypes.Pregnancies] = CostInSeconds.Pregnancy;
