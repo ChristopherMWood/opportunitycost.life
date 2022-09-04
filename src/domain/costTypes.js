@@ -14,6 +14,7 @@ export const CostInSeconds = {
 	Weekend: 216000,
 	NightOfSleep: 28800,
 	FootballGame: 10800,
+	Day: 86400,
 };
 
 const CostByTypeMap = {};

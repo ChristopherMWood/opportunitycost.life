@@ -127,7 +127,7 @@ function TopChannelsPage() {
 										<TableRow key={index}>
 											<TableCell align='left'>{index + 1}</TableCell>
 											<TableCell align='left'>
-												<a href={'/?c=' + result._id}>{result.title}</a>
+												<a href={'/?v=' + result._id}>{result.title}</a>
 											</TableCell>
 											<TableCell align='center'>{result.costByType}</TableCell>
 										</TableRow>

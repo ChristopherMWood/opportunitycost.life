@@ -11,6 +11,7 @@ import HikingIcon from '@mui/icons-material/Hiking';
 import InfoIcon from '@mui/icons-material/Info';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import ExtensionIcon from '@mui/icons-material/Extension';
 import { useNavigate } from 'react-router-dom';
 
 const primaryMenuOptions = [
@@ -37,6 +38,13 @@ const primaryMenuOptions = [
 		linkTo: '/total-cost',
 		isInternal: true,
 		icon: <HikingIcon sx={{ color: 'icon.primary' }} />,
+	},
+	{
+		text: 'Chrome Plugin',
+		linkTo:
+			'https://chrome.google.com/webstore/detail/opmdccohfkcfedakekphplpahmjnfgcd/preview?hl=en&authuser=0',
+		isInternal: false,
+		icon: <ExtensionIcon sx={{ color: 'icon.primary' }} />,
 	},
 ];
 

@@ -6,8 +6,8 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import HotelIcon from '@mui/icons-material/Hotel';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import SportsFootballIcon from '@mui/icons-material/SportsFootball';
-import { abbreviateNumber } from 'js-abbreviation-number';
 import { CostInSeconds } from '../../domain/costTypes';
+import EventCostBlock from '../eventCostBlock/eventCostBlock';
 import './styles.scss';
 
 const iconFontSize = 60;
@@ -69,23 +69,14 @@ const specificOpportunityCosts = [
 
 const specificCostBlock = (item, videoOpportunityCost, index) => {
 	const rawCostValue = videoOpportunityCost / item.costPer;
-	const roundedCostValue = Math.floor(rawCostValue);
-	const abbreviatedValue = abbreviateNumber(roundedCostValue);
 
 	if (rawCostValue >= 1) {
 		return (
-			<div key={index}>
-				<Stack direction='row' justifyContent='start' spacing={3}>
-					{item.icon}
-					<Stack className='specific-cost-block' justifyContent='center'>
-						<label className='specific-cost-number'>{abbreviatedValue}</label>
-						<label className='specific-cost-label'>{item.name}</label>
-					</Stack>
-					<Stack direction='row'>
-						<p>{item.description}</p>
-					</Stack>
-				</Stack>
-			</div>
+			<EventCostBlock
+				index={index}
+				item={item}
+				totalOpportunityCost={videoOpportunityCost}
+			/>
 		);
 	}
 
