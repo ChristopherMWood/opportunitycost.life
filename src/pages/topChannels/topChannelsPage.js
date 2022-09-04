@@ -73,7 +73,7 @@ function TopChannelsPage() {
 		<div className='site-page-container top-channels-page'>
 			<Stack direction='column' spacing={3}>
 				<Typography variant='h4' align='center'>
-					Top Offending Channels (so far)
+					Top Costing Channels (so far)
 				</Typography>
 				<Container>
 					<Dropdown

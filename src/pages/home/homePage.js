@@ -81,7 +81,7 @@ function HomePage() {
 				isVisible={!resultsLoaded}
 				startWithAnimation={false}
 			>
-				<Typography variant='h3' align='center' component='div'>
+				<Typography variant='h4' align='center' component='div'>
 					YouTube Opportunity Cost Calculator
 				</Typography>
 			</CollapsibleView>
@@ -100,16 +100,30 @@ function HomePage() {
 				isVisible={!resultsLoaded}
 				startWithAnimation={false}
 			>
-				<Container maxWidth='sm'>
-					<Typography variant='body1' align='center'>
-						opportunity cost (noun)
-					</Typography>
-					<Typography variant='body1' align='left'>
-						1. The cost of an opportunity forgone (and the loss of the benefits
-						that could be received from that opportunity); the most valuable
-						forgone alternative.
-						<br></br>2. Cost in terms of foregoing alternatives
-					</Typography>
+				<Container justifyContent='center' maxWidth='sm'>
+					<Stack spacing={1}>
+						<Typography variant='body1' align='center'>
+							opportunity cost (noun) -{' '}
+							<a
+								href='https://www.wordnik.com/words/opportunity%20cost'
+								target='_blank'
+								rel='noreferrer'
+							>
+								source
+							</a>
+						</Typography>
+						<Typography variant='body1' align='left'>
+							1. The cost of an opportunity forgone (and the loss of the
+							benefits that could be received from that opportunity); the most
+							valuable forgone alternative.
+						</Typography>
+						{/* <Typography>2. Cost in terms of foregoing alternatives</Typography> */}
+						<Typography>
+							2. That nagging feeling you get of what else you could be doing
+							after you let the YouTube algorithm pull you down yet another
+							rabbit hole.
+						</Typography>
+					</Stack>
 				</Container>
 			</CollapsibleView>
 			{resultsLoaded && (

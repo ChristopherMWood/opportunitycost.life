@@ -28,9 +28,10 @@ function SingleFieldInputForm(props) {
 	};
 
 	return (
-		<Stack className='stylized-input' direction='row' justifyContent='center'>
+		<Stack direction='row' justifyContent='center'>
 			<form onSubmit={onSubmit}>
 				<TextField
+					className='stylized-input'
 					value={inputValue}
 					onChange={updateInput}
 					label={props.inputLabel}
@@ -40,7 +41,11 @@ function SingleFieldInputForm(props) {
 					helperText={error}
 					disabled={props.loading}
 				/>
-				<LoadingButton type='submit' loading={props.loading}>
+				<LoadingButton
+					className='stylized-button button-59'
+					type='submit'
+					loading={props.loading}
+				>
 					{props.buttonText}
 				</LoadingButton>
 			</form>

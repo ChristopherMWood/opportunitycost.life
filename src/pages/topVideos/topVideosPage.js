@@ -73,7 +73,7 @@ function TopChannelsPage() {
 		<div className='site-page-container top-videos-page'>
 			<Stack direction='column' spacing={3}>
 				<Typography variant='h4' align='center'>
-					Top Offending Videos (so far)
+					Top Costing Videos (so far)
 				</Typography>
 				<Container>
 					<Dropdown

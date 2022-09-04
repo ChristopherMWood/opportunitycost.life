@@ -6,24 +6,26 @@ import './styles.scss';
 
 function Dropdown(props) {
 	return (
-		<FormControl className="dropdown-container" fullWidth>
-			<InputLabel id="demo-simple-select-label">Cost Type</InputLabel>
-			<Select
-				labelId="demo-simple-select-label"
-				id="demo-simple-select"
-				value={props.startValue}
-				label="Cost Type"
-				onChange={props.onChange}
-			>
-				{props.selectValues.map((selectValue, index) => {
-					return (
-						<MenuItem key={index} value={selectValue}>
-							{selectValue}
-						</MenuItem>
-					);
-				})}
-			</Select>
-		</FormControl>
+		<div className='dropdown-container'>
+			<FormControl fullWidth>
+				<InputLabel id='demo-simple-select-label'>Cost Type</InputLabel>
+				<Select
+					labelId='demo-simple-select-label'
+					id='demo-simple-select'
+					value={props.startValue}
+					label='Cost Type'
+					onChange={props.onChange}
+				>
+					{props.selectValues.map((selectValue, index) => {
+						return (
+							<MenuItem key={index} value={selectValue}>
+								{selectValue}
+							</MenuItem>
+						);
+					})}
+				</Select>
+			</FormControl>
+		</div>
 	);
 }
 
