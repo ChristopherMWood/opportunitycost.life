@@ -65,7 +65,7 @@ function AboutPage() {
 					most projects ballooned into the frontend, API and chrome plugin it is
 					today. All of the code is open source and linked below. If you want to
 					learn more about me (Christopher) feel free to check out my personal
-					site too.
+					site.
 				</Typography>
 				<EventCostBlock
 					index={0}
