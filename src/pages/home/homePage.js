@@ -42,33 +42,31 @@ function HomePage() {
 	const onYouTubeUrlSubmit = (videoUrl, manual = true) => {
 		setLoading(true);
 
-		const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(videoUrl);
-		OpportunityCostApiProxy.getMetadata(
-			videoId,
-			data => {
-				setResultsData(data);
-				setVideoId(videoId);
-				setResultsLoaded(true);
-				setLoading(false);
+		const videoId = YouTubeUrlInputValidator.parseYouTubeVideoId(videoUrl);
 
-				if (manual) {
-					setSearchParams({ v: videoId });
+		if (videoId) {
+			OpportunityCostApiProxy.getMetadata(
+				videoId,
+				data => {
+					setResultsData(data);
+					setVideoId(videoId);
+					setResultsLoaded(true);
+					setLoading(false);
+
+					if (manual) {
+						setSearchParams({ v: videoId });
+					}
+				},
+				error => {
+					alert(error);
 				}
-			},
-			error => {
-				alert(error);
-			}
-		);
+			);
+		}
 	};
 
 	const validateYouTubeUrlInput = inputValue => {
-		if (YouTubeUrlInputValidator.isValidHttpUrl(inputValue)) {
-			const videoId = YouTubeUrlInputValidator.getVideoIdFromUrl(inputValue);
-			const isValid =
-				videoId !== undefined && videoId !== null && videoId.length > 0;
-			if (isValid) {
-				return '';
-			}
+		if (YouTubeUrlInputValidator.parseYouTubeVideoId(inputValue)) {
+			return '';
 		}
 
 		return 'Must be a YouTube video URL';

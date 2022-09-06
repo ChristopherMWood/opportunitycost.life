@@ -10,7 +10,7 @@ export const theme = createTheme({
 			contrastText: '#fffefe',
 		},
 		icon: {
-			primary: 'black',
+			primary: 'blue',
 		},
 		secondary: {
 			main: '#f9045b',
