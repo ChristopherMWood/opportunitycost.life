@@ -4,10 +4,11 @@ import { Stack, Container } from '@mui/system';
 import './styles.scss';
 import { YouTubeUrlInputValidator } from '../../domain/urlValidator';
 import { OpportunityCostApiProxy } from '../../domain/opportunityCostApiProxy';
-import ResultsView from '../../components/resultsView';
+import VideoResultsView from '../../components/videoResultsView';
 import { useSearchParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Collapse from '@mui/material/Collapse';
+import ChannelResultsView from '../../components/channelResultsView';
 
 const animateSpeed = 1000;
 
@@ -18,11 +19,13 @@ function HomePage() {
 	const [loadedViaUrl, setLoadedViaUrl] = useState(false);
 	const [resultsData, setResultsData] = useState(null);
 	const [videoId, setVideoId] = useState(null);
+	const [channelId, setChannelId] = useState(null);
 	const [urlInputValue, setUrlInputValue] = useState('');
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		const videoId = searchParams.get('v');
+		const channelId = searchParams.get('c');
 
 		if (videoId && videoId.length > 0 && firstPageLoad) {
 			setVideoId(videoId);
@@ -31,6 +34,10 @@ function HomePage() {
 			const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 			setUrlInputValue(videoUrl);
 			onYouTubeUrlSubmit(videoUrl, false);
+		} else if (channelId && channelId.length > 0 && firstPageLoad) {
+			setLoadedViaUrl(true);
+			setFirstPageLoad(false);
+			loadChannelData(channelId);
 		}
 	}, []);
 
@@ -39,9 +46,16 @@ function HomePage() {
 		setResultsLoaded(false);
 		setResultsData(null);
 		setUrlInputValue('');
+		setVideoId(null);
+		setChannelId(null);
 
 		if (searchParams.has('v')) {
 			searchParams.delete('v');
+			setSearchParams(searchParams);
+		}
+
+		if (searchParams.has('c')) {
+			searchParams.delete('c');
 			setSearchParams(searchParams);
 		}
 	};
@@ -56,7 +70,7 @@ function HomePage() {
 		const videoId = YouTubeUrlInputValidator.parseYouTubeVideoId(videoUrl);
 
 		if (videoId) {
-			OpportunityCostApiProxy.getMetadata(
+			OpportunityCostApiProxy.getVideoMetadata(
 				videoId,
 				data => {
 					setResultsData(data);
@@ -69,7 +83,7 @@ function HomePage() {
 					}
 				},
 				error => {
-					alert(error);
+					console.log(error);
 				}
 			);
 		}
@@ -81,6 +95,25 @@ function HomePage() {
 		}
 
 		return 'Must be a YouTube video URL';
+	};
+
+	const loadChannelData = channelId => {
+		setLoading(true);
+
+		if (channelId) {
+			OpportunityCostApiProxy.getChannelMetadata(
+				channelId,
+				data => {
+					setResultsData(data);
+					setChannelId(channelId);
+					setResultsLoaded(true);
+					setLoading(false);
+				},
+				error => {
+					console.log(error);
+				}
+			);
+		}
 	};
 
 	return (
@@ -133,10 +166,17 @@ function HomePage() {
 					</Container>
 				</Collapse>
 			)}
-			{resultsLoaded && (
-				<ResultsView
+			{resultsLoaded && videoId && (
+				<VideoResultsView
 					data={resultsData}
 					videoId={videoId}
+					onReset={onResultsReset}
+				/>
+			)}
+			{resultsLoaded && channelId && (
+				<ChannelResultsView
+					data={resultsData}
+					channelId={channelId}
 					onReset={onResultsReset}
 				/>
 			)}

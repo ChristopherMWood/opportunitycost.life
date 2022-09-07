@@ -16,8 +16,20 @@ class OpportunityCostApiProxy {
 			});
 	}
 
-	static getMetadata(videoId, success, failure) {
+	static getVideoMetadata(videoId, success, failure) {
 		const requestUrl = `${baseUrl}/api/opportunitycost/${videoId}`;
+		axios
+			.get(requestUrl)
+			.then(function (response) {
+				success(response.data);
+			})
+			.catch(function (error) {
+				failure(error);
+			});
+	}
+
+	static getChannelMetadata(channelId, success, failure) {
+		const requestUrl = `${baseUrl}/api/opportunitycost/channel/${channelId}`;
 		axios
 			.get(requestUrl)
 			.then(function (response) {

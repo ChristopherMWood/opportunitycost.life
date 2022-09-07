@@ -15,7 +15,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
 });
 
-function ResultsView(props) {
+function ChannelResultsView(props) {
 	const [copiedToClipboardOpen, setCopiedToClipboardOpen] = useState(false);
 
 	const copyUrlToClipboard = event => {
@@ -69,16 +69,14 @@ function ResultsView(props) {
 						</Snackbar>
 					</Container>
 					<Typography variant='h4' align='center'>
-						{'Opportunity cost of "' + props.data.videoMeta.title + '"'}
+						{'Opportunity cost of Channel "' + props.data.name + '"'}
 					</Typography>
-					<CostBlocks totalSeconds={props.data.videoMeta.opportunityCost} />
-					<EventCostBlocks
-						totalSeconds={props.data.videoMeta.opportunityCost}
-					/>
+					<CostBlocks totalSeconds={props.data.opportunityCost} />
+					<EventCostBlocks totalSeconds={props.data.opportunityCost} />
 				</Stack>
 			</Box>
 		</div>
 	);
 }
 
-export default ResultsView;
+export default ChannelResultsView;
