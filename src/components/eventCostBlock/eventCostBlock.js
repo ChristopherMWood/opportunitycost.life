@@ -10,12 +10,7 @@ function EventCostBlock(props) {
 	const abbreviatedValue = abbreviateNumber(roundedCostValue);
 
 	return (
-		<Stack
-			key={props.index}
-			spacing={2}
-			direction='row'
-			className='event-cost-block'
-		>
+		<Stack spacing={2} direction='row' className='event-cost-block'>
 			<Stack
 				direction='row'
 				className='event-cost-data-container'
@@ -35,7 +30,7 @@ function EventCostBlock(props) {
 				</Stack>
 			</Stack>
 			<Box className='event-cost-context-container'>
-				<Typography align='start'>{props.item.description}</Typography>
+				<Typography align='left'>{props.item.description}</Typography>
 			</Box>
 		</Stack>
 	);

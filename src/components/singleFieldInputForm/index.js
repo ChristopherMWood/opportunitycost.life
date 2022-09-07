@@ -1,29 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Stack from '@mui/system/Stack';
 import TextField from '@mui/material/TextField';
 import LoadingButton from '@mui/lab/LoadingButton';
 import './styles.scss';
 
 function SingleFieldInputForm(props) {
-	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState(undefined);
-
-	useEffect(() => {
-		setInputValue(props.startValue);
-	}, [props.startValue]);
-
-	const updateInput = e => {
-		setInputValue(e.target.value);
-	};
 
 	const onSubmit = event => {
 		event.preventDefault();
-		const errorText = props.onValidate(inputValue);
+		const errorText = props.onValidate(props.value);
 
 		if (errorText) {
 			setError(errorText);
 		} else {
-			props.onSubmit(inputValue, true);
+			setError('');
+			props.onSubmit(props.value, true);
 		}
 	};
 
@@ -32,8 +24,8 @@ function SingleFieldInputForm(props) {
 			<form onSubmit={onSubmit}>
 				<TextField
 					className='stylized-input'
-					value={inputValue}
-					onChange={updateInput}
+					value={props.value}
+					onChange={e => props.onChange(e)}
 					label={props.inputLabel}
 					variant='standard'
 					name='youtube-url'

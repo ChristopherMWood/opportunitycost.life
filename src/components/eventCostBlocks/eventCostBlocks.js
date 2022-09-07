@@ -73,7 +73,7 @@ const specificCostBlock = (item, videoOpportunityCost, index) => {
 	if (rawCostValue >= 1) {
 		return (
 			<EventCostBlock
-				index={index}
+				key={index}
 				item={item}
 				totalOpportunityCost={videoOpportunityCost}
 			/>

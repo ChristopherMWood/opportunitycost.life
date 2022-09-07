@@ -42,7 +42,7 @@ const primaryMenuOptions = [
 	{
 		text: 'Chrome Plugin',
 		linkTo:
-			'https://chrome.google.com/webstore/detail/opmdccohfkcfedakekphplpahmjnfgcd/preview?hl=en&authuser=0',
+			'https://chrome.google.com/webstore/detail/youtube-opportunity-cost/opmdccohfkcfedakekphplpahmjnfgcd?hl=en&authuser=0',
 		isInternal: false,
 		icon: <ExtensionIcon sx={{ color: 'icon.primary' }} />,
 	},
