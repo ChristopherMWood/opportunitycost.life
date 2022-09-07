@@ -28,7 +28,7 @@ function SingleFieldInputForm(props) {
 	};
 
 	return (
-		<Stack direction='row' justifyContent='center'>
+		<Stack direction='row' justifyContent='center' className={props.className}>
 			<form onSubmit={onSubmit}>
 				<TextField
 					className='stylized-input'

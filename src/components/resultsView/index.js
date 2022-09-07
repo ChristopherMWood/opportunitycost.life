@@ -12,7 +12,7 @@ import CostBlocks from '../costBlocks/costBlocks';
 import EventCostBlocks from '../eventCostBlocks/eventCostBlocks';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
-	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+	return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
 });
 
 function ResultsView(props) {
@@ -32,21 +32,21 @@ function ResultsView(props) {
 	};
 
 	return (
-		<div className="results-container">
+		<div className='results-container'>
 			<Box>
 				<Stack spacing={5}>
 					<Container>
-						<Stack direction="row" justifyContent="center" spacing={2}>
+						<Stack direction='row' justifyContent='center' spacing={2}>
 							<Button
 								onClick={copyUrlToClipboard}
-								variant="outlined"
+								variant='outlined'
 								startIcon={<ShareIcon />}
 							>
 								Share
 							</Button>
 							<Button
 								onClick={props.onReset}
-								variant="contained"
+								variant='contained'
 								endIcon={<RestartAltIcon />}
 							>
 								Reset
@@ -56,19 +56,19 @@ function ResultsView(props) {
 							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 							open={copiedToClipboardOpen}
 							onClose={handleShareNotificationClose}
-							message="URL Copied to Clipboard"
+							message='URL Copied to Clipboard'
 							autoHideDuration={3000}
 						>
 							<Alert
 								onClose={handleShareNotificationClose}
-								severity="success"
+								severity='success'
 								sx={{ width: '100%' }}
 							>
 								URL Copied to Clipboard!
 							</Alert>
 						</Snackbar>
 					</Container>
-					<Typography variant="h4" align="center">
+					<Typography variant='h4' align='center'>
 						{'Opportunity cost of "' + props.data.videoMeta.title + '"'}
 					</Typography>
 					<CostBlocks totalSeconds={props.data.videoMeta.opportunityCost} />

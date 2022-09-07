@@ -1,11 +1,58 @@
-.specific-cost-block {
-	.specific-cost-number {
-		font-weight: bolder;
-		font-size: xxx-large;
+@import '../../styles/variables.scss';
+
+.event-cost-block {
+	.event-cost-data-container {
+		width: 33%;
+		max-width: 250px;
+
+		.event-cost-icon-container {
+			display: flex;
+			align-items: center;
+		}
+
+		.event-cost-data-number-container {
+			width: 150px;
+			text-align: center;
+
+			.event-cost-number {
+				font-weight: bolder;
+				font-size: xxx-large;
+			}
+		}
 	}
 
-	.specific-cost-label {
-		display: block;
-		text-align: center;
+	.event-cost-context-container {
+		width: 66%;
+		display: flex;
+		align-items: center;
+	}
+}
+
+@media only screen and (max-width: $tablet-max-width) {
+	.event-cost-block {
+		flex-direction: column !important;
+
+		.event-cost-data-container {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
+		.event-cost-context-container {
+			width: 100%;
+
+			p {
+				text-align: center;
+				margin: 0 auto;
+			}
+		}
+
+		> div {
+			margin: 0 auto;
+			width: 100%;
+
+			label {
+				font-weight: bolder;
+			}
+		}
 	}
 }

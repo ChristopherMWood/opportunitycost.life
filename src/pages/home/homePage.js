@@ -73,7 +73,7 @@ function HomePage() {
 	};
 
 	return (
-		<Stack id='home-page-container' className='site-page-container' spacing={2}>
+		<Stack id='home-page-container' className='site-page-container'>
 			<CollapsibleView
 				animate={true}
 				isVisible={!resultsLoaded}
@@ -85,6 +85,7 @@ function HomePage() {
 			</CollapsibleView>
 
 			<SingleFieldInputForm
+				className='primary-site-input-container'
 				inputLabel='Youtube URL'
 				buttonText='Calculate'
 				startValue={urlInputValue}

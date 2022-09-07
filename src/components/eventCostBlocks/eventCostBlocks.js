@@ -103,7 +103,9 @@ const EventCostBlocks = props => {
 
 	return (
 		<Container>
-			<Typography variant='h3'>Stats for Fun</Typography>
+			<Typography variant='h4' align='center'>
+				Stats for Fun
+			</Typography>
 			<Stack spacing={5}>{getSpecificOpportunityCosts()}</Stack>
 		</Container>
 	);

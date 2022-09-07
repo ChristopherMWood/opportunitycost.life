@@ -1,7 +1,8 @@
-import { Stack } from '@mui/system';
+import { Stack, Box } from '@mui/system';
 import Skeleton from '@mui/material/Skeleton';
 import { abbreviateNumber } from 'js-abbreviation-number';
 import './styles.scss';
+import { Typography } from '@mui/material';
 
 function EventCostBlock(props) {
 	const rawCostValue = props.totalOpportunityCost / props.item.costPer;
@@ -9,22 +10,34 @@ function EventCostBlock(props) {
 	const abbreviatedValue = abbreviateNumber(roundedCostValue);
 
 	return (
-		<div key={props.index}>
-			<Stack direction='row' justifyContent='start' spacing={3}>
-				{props.item.icon}
-				<Stack className='specific-cost-block' justifyContent='center'>
+		<Stack
+			key={props.index}
+			spacing={2}
+			direction='row'
+			className='event-cost-block'
+		>
+			<Stack
+				direction='row'
+				className='event-cost-data-container'
+				spacing={3}
+				justifyContent='center'
+			>
+				<Box className='event-cost-icon-container'>{props.item.icon}</Box>
+				<Stack className='event-cost-data-number-container' direction='column'>
 					{props.totalOpportunityCost == 0 ? (
 						<Skeleton variant='rectangular' width='100%' height='100%' />
 					) : (
-						<label className='specific-cost-number'>{abbreviatedValue}</label>
+						<Typography align='center' className='event-cost-number'>
+							{abbreviatedValue}
+						</Typography>
 					)}
 					<label className='specific-cost-label'>{props.item.name}</label>
 				</Stack>
-				<Stack direction='row'>
-					<p>{props.item.description}</p>
-				</Stack>
 			</Stack>
-		</div>
+			<Box className='event-cost-context-container'>
+				<Typography align='start'>{props.item.description}</Typography>
+			</Box>
+		</Stack>
 	);
 }
 
