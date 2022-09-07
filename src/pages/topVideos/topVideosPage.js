@@ -44,7 +44,7 @@ function TopChannelsPage() {
 				setResults(newResultsList);
 				setPage(page + 1);
 
-				if (results.length > 100 || pagedResults.length < pageSize) {
+				if (newResultsList.length >= 100 || pagedResults.length < pageSize) {
 					setHasMore(false);
 				}
 			},
