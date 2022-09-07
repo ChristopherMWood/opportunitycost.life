@@ -14,7 +14,7 @@ function SingleFieldInputForm(props) {
 		if (errorText) {
 			setError(errorText);
 		} else {
-			setError('');
+			setError(undefined);
 			props.onSubmit(props.value, true);
 		}
 	};
@@ -29,7 +29,7 @@ function SingleFieldInputForm(props) {
 					label={props.inputLabel}
 					variant='standard'
 					name='youtube-url'
-					error={error}
+					error={error !== undefined}
 					helperText={error}
 					disabled={props.loading}
 				/>
