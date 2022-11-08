@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Tool to calculate the Opportunity Cost of videos and channels across YouTube"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>YouTube Opportunity Cost</title>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H45WM9P97H"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, minimum-scale=1"
+		/>
+		<meta name="theme-color" content="#000000" />
+		<meta
+			name="description"
+			content="Tool to calculate the Opportunity Cost of videos and channels across YouTube"
+		/>
 
-        gtag('config', 'G-H45WM9P97H');
-    </script>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+		<title>YouTube Opportunity Cost</title>
+		<meta property="og:title" content="YouTube Opportunity Cost" />
+		<meta name="twitter:title" content="YouTube Opportunity Cost" />
+
+		<meta
+			name="description"
+			content="Calculate how much time, in real world numbers, any YouTube video has wasted for the humanity."
+		/>
+		<meta
+			property="og:description"
+			content="Calculate how much time, in real world numbers, any YouTube video has wasted for the humanity."
+		/>
+		<meta
+			name="twitter:description"
+			content="Calculate how much time, in real world numbers, any YouTube video has wasted for the humanity."
+		/>
+
+		<meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+		<meta name="twitter:image" content="%PUBLIC_URL%/logo192.png" />
+
+		<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-H45WM9P97H"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'G-H45WM9P97H');
+		</script>
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+	</body>
 </html>
