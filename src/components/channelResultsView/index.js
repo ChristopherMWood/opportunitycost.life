@@ -1,7 +1,7 @@
 import './styles.scss';
 import React, { useState } from 'react';
 import { Box, Stack, Container } from '@mui/system';
-import { Typography } from '@mui/material';
+import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import ShareIcon from '@mui/icons-material/Share';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
@@ -68,9 +68,15 @@ function ChannelResultsView(props) {
 							</Alert>
 						</Snackbar>
 					</Container>
-					<Typography variant='h4' align='center'>
+					<Link
+						href={'https://www.youtube.com/channel/' + props.channelId}
+						target='_blank'
+						rel='noreferrer'
+						variant='h4'
+						align='center'
+					>
 						{'Opportunity cost of Channel "' + props.data.name + '"'}
-					</Typography>
+					</Link>
 					<CostBlocks totalSeconds={props.data.opportunityCost} />
 					<EventCostBlocks totalSeconds={props.data.opportunityCost} />
 				</Stack>

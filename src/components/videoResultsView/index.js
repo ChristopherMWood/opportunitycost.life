@@ -1,7 +1,7 @@
 import './styles.scss';
 import React, { useState } from 'react';
 import { Box, Stack, Container } from '@mui/system';
-import { Typography } from '@mui/material';
+import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import ShareIcon from '@mui/icons-material/Share';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
@@ -68,9 +68,15 @@ function VideoResultsView(props) {
 							</Alert>
 						</Snackbar>
 					</Container>
-					<Typography variant='h4' align='center'>
+					<Link
+						href={'https://www.youtube.com/watch?v=' + props.videoId}
+						target='_blank'
+						rel='noreferrer'
+						variant='h4'
+						align='center'
+					>
 						{'Opportunity cost of "' + props.data.videoMeta.title + '"'}
-					</Typography>
+					</Link>
 					<CostBlocks totalSeconds={props.data.videoMeta.opportunityCost} />
 					<EventCostBlocks
 						totalSeconds={props.data.videoMeta.opportunityCost}

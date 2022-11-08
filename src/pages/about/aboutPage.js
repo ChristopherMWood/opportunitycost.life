@@ -48,25 +48,6 @@ function AboutPage() {
 				<Typography variant='h4' align='center'>
 					About the Site
 				</Typography>
-				<Typography variant='body1'>
-					This all started when I was listening to the{' '}
-					<a
-						href='https://www.youtube.com/channel/UCNSeDrWRGxx5p2l3tj7RWQw'
-						target='_blank'
-						rel='noreferrer'
-					>
-						Corridor Digital Podcast
-					</a>{' '}
-					episode number I can&apos;t remember anymore. The podcast is about a
-					fantastic YouTube channel and on it they wondered how many human lives
-					worth of time their entire channel consumed in view time. I realized
-					this is the exact type of problem computers should be and could be
-					solving. And thus, this site was born. It started out small, and like
-					most projects ballooned into the frontend, API and chrome plugin it is
-					today. All of the code is open source and linked below. If you want to
-					learn more about me (Christopher) feel free to check out my personal
-					site.
-				</Typography>
 				<EventCostBlock
 					index={0}
 					item={devItem}
