@@ -47,7 +47,6 @@ const TotalCostPage = () => {
 				if (allCost) {
 					setTotalSeconds(allCost);
 					const newGoalState = calculateGoalsState(CostGoals, allCost);
-					console.log(allCost / newGoalState.currentGoal.cost);
 					setGoalState(newGoalState);
 				}
 			},
@@ -84,7 +83,7 @@ const TotalCostPage = () => {
 							}
 							return (
 								<TimelineItem key={index}>
-									<TimelineOppositeContent color='text.secondary'>
+									<TimelineOppositeContent color='text.primary'>
 										{goal.timeString}
 									</TimelineOppositeContent>
 									<TimelineSeparator>

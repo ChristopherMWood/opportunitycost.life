@@ -158,7 +158,7 @@ function HomePage() {
 							</Typography>
 							{/* <Typography>2. Cost in terms of foregoing alternatives</Typography> */}
 							<Typography>
-								2. That nagging feeling you get of what else you could be doing
+								2. That nagging feeling you get of what else you could have done
 								after you let the YouTube algorithm pull you down yet another
 								rabbit hole.
 							</Typography>

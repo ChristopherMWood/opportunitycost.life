@@ -7,10 +7,10 @@ export default function ProgressBarWithLabel(props) {
 		<Box sx={{ width: '100%' }}>
 			<Box sx={{ display: 'flex', alignItems: 'center' }}>
 				<Box sx={{ width: '100%', mr: 1 }}>
-					<LinearProgress variant='determinate' {...props} />
+					<LinearProgress color='success' variant='determinate' {...props} />
 				</Box>
 				<Box sx={{ minWidth: 35 }}>
-					<Typography variant='body2' color='text.secondary'>{`${Math.round(
+					<Typography variant='body2' color='text.primary'>{`${Math.round(
 						props.value
 					)}%`}</Typography>
 				</Box>

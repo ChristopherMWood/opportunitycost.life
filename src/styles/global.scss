@@ -19,6 +19,21 @@ body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+a {
+	color: white !important;
+}
+
+table,
+th,
+td {
+	background-color: #13294b !important;
+	color: white !important;
+}
+
+li {
+	color: black !important;
+}
+
 .app-drawer {
 	height: 100%;
 }
