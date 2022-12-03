@@ -12,7 +12,8 @@ import TotalCostPage from './pages/totalCost/totalCostPage';
 import AboutPage from './pages/about/aboutPage';
 import NotFoundPage from './pages/404/404Page';
 import GlobalHeader from './components/globalHeader';
-import { theme } from './styles/theme';
+import { theme } from './styles/themes/primaryTheme';
+import Box from '@mui/material/Box';
 
 function App() {
 	const [siteMenuOpen, setSiteMenuOpen] = React.useState(false);
@@ -26,18 +27,18 @@ function App() {
 	};
 
 	return (
-		<div className="App">
+		<Box className='App'>
 			<BrowserRouter>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
 					<GlobalHeader onMenuClick={toggleMenu(true)} />
 					<Routes>
-						<Route path="/" element={<HomePage />} />
-						<Route path="top-videos" element={<TopVideosPage />} />
-						<Route path="top-channels" element={<TopChannelsPage />} />
-						<Route path="/total-cost" element={<TotalCostPage />} />
-						<Route path="about" element={<AboutPage />} />
-						<Route path="*" element={<NotFoundPage />} />
+						<Route path='/' element={<HomePage />} />
+						<Route path='top-videos' element={<TopVideosPage />} />
+						<Route path='top-channels' element={<TopChannelsPage />} />
+						<Route path='/total-cost' element={<TotalCostPage />} />
+						<Route path='about' element={<AboutPage />} />
+						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
 					<Drawer
 						anchor={'right'}
@@ -48,7 +49,7 @@ function App() {
 					</Drawer>
 				</ThemeProvider>
 			</BrowserRouter>
-		</div>
+		</Box>
 	);
 }
 

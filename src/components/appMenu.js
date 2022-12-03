@@ -14,37 +14,39 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import ExtensionIcon from '@mui/icons-material/Extension';
 import { useNavigate } from 'react-router-dom';
 
+const menuIconColor = 'icon.primary';
+
 const primaryMenuOptions = [
 	{
 		text: 'Home',
 		linkTo: '/',
 		isInternal: true,
-		icon: <CottageIcon sx={{ color: 'icon.primary' }} />,
+		icon: <CottageIcon sx={{ color: menuIconColor }} />,
 	},
 	{
 		text: 'Top Videos',
 		linkTo: '/top-videos',
 		isInternal: true,
-		icon: <VideocamIcon sx={{ color: 'icon.primary' }} />,
+		icon: <VideocamIcon sx={{ color: menuIconColor }} />,
 	},
 	{
 		text: 'Top Channels',
 		linkTo: '/top-channels',
 		isInternal: true,
-		icon: <VideoLibraryIcon sx={{ color: 'icon.primary' }} />,
+		icon: <VideoLibraryIcon sx={{ color: menuIconColor }} />,
 	},
 	{
 		text: 'Total Cost',
 		linkTo: '/total-cost',
 		isInternal: true,
-		icon: <HikingIcon sx={{ color: 'icon.primary' }} />,
+		icon: <HikingIcon sx={{ color: menuIconColor }} />,
 	},
 	{
 		text: 'Chrome Plugin',
 		linkTo:
 			'https://chrome.google.com/webstore/detail/youtube-opportunity-cost/opmdccohfkcfedakekphplpahmjnfgcd?hl=en&authuser=0',
 		isInternal: false,
-		icon: <ExtensionIcon sx={{ color: 'icon.primary' }} />,
+		icon: <ExtensionIcon sx={{ color: menuIconColor }} />,
 	},
 ];
 
@@ -53,13 +55,13 @@ const secondaryMenuOptions = [
 		text: 'About',
 		linkTo: '/about',
 		isInternal: true,
-		icon: <InfoIcon sx={{ color: 'icon.primary' }} />,
+		icon: <InfoIcon sx={{ color: menuIconColor }} />,
 	},
 	{
 		text: 'Report Bug',
 		linkTo: 'https://github.com/ChristopherMWood/opportunitycost.life/issues',
 		isInternal: false,
-		icon: <BugReportIcon sx={{ color: 'icon.primary' }} />,
+		icon: <BugReportIcon sx={{ color: menuIconColor }} />,
 	},
 ];
 
@@ -77,7 +79,7 @@ const AppMenu = props => {
 	return (
 		<Box
 			className='app-drawer'
-			sx={{ width: 250 }}
+			sx={{ width: 250, backgroundColor: 'primary.light' }}
 			role='presentation'
 			onClick={props.toggleMenu(false)}
 			onKeyDown={props.toggleMenu(false)}
@@ -96,7 +98,7 @@ const AppMenu = props => {
 					</ListItem>
 				))}
 			</List>
-			<Divider color='white' />
+			<Divider color='divider.dark' />
 			<List>
 				{secondaryMenuOptions.map(option => (
 					<ListItem key={option.text} disablePadding>

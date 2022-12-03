@@ -12,6 +12,7 @@ const birthdate = new Date('5/01/1992');
 const now = new Date();
 const diffTime = Math.abs(now - birthdate);
 const diffSeconds = Math.ceil(diffTime / 1000);
+const buttonStyle = { color: 'white', border: 'solid 1px white' };
 
 const devItem = {
 	name: 'Christophers',
@@ -55,6 +56,7 @@ function AboutPage() {
 				/>
 				<Stack direction='row' justifyContent='center' spacing={2}>
 					<Button
+						sx={buttonStyle}
 						variant='outlined'
 						startIcon={<GitHubIcon />}
 						onClick={() => {
@@ -66,6 +68,7 @@ function AboutPage() {
 						Front-end
 					</Button>
 					<Button
+						sx={buttonStyle}
 						variant='outlined'
 						startIcon={<GitHubIcon />}
 						onClick={() => {
@@ -77,6 +80,7 @@ function AboutPage() {
 						API
 					</Button>
 					<Button
+						sx={buttonStyle}
 						variant='outlined'
 						startIcon={<GitHubIcon />}
 						onClick={() => {
@@ -89,6 +93,7 @@ function AboutPage() {
 					</Button>
 				</Stack>
 				<Button
+					sx={buttonStyle}
 					variant='outlined'
 					startIcon={<CoPresentIcon />}
 					onClick={() => {

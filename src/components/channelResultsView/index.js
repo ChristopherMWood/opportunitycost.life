@@ -5,10 +5,12 @@ import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import ShareIcon from '@mui/icons-material/Share';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import copy from 'copy-to-clipboard';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import CostBlocks from '../costBlocks/costBlocks';
+import { Typography } from '@mui/material';
 import EventCostBlocks from '../eventCostBlocks/eventCostBlocks';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -53,7 +55,10 @@ function ChannelResultsView(props) {
 							</Button>
 						</Stack>
 						<Snackbar
-							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+							anchorOrigin={{
+								vertical: 'bottom',
+								horizontal: 'right',
+							}}
 							open={copiedToClipboardOpen}
 							onClose={handleShareNotificationClose}
 							message='URL Copied to Clipboard'
@@ -62,7 +67,9 @@ function ChannelResultsView(props) {
 							<Alert
 								onClose={handleShareNotificationClose}
 								severity='success'
-								sx={{ width: '100%' }}
+								sx={{
+									width: '100%',
+								}}
 							>
 								URL Copied to Clipboard!
 							</Alert>
@@ -76,7 +83,11 @@ function ChannelResultsView(props) {
 						align='center'
 					>
 						{'Opportunity cost of Channel "' + props.data.name + '"'}
+						<OpenInNewIcon fontSize='medium' sx={{ marginLeft: '10px' }} />
 					</Link>
+					<Typography align='center' variant='h5'>
+						~ #{props.data.rank} worst channel so far calculated ~
+					</Typography>
 					<CostBlocks totalSeconds={props.data.opportunityCost} />
 					<EventCostBlocks totalSeconds={props.data.opportunityCost} />
 				</Stack>

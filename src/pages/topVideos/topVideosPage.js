@@ -11,7 +11,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import Dropdown from '../../components/dropdown/dropdown';
 import { CostTypes } from '../../domain/costTypes';
 import { getOpportunityCostByType } from '../../domain/costHelpers';
@@ -96,7 +95,7 @@ function TopChannelsPage() {
 						})}
 					</Stack>
 				) : (
-					<TableContainer component={Paper}>
+					<TableContainer sx={{ backgroundColor: 'primary.main' }}>
 						<InfiniteScroll
 							dataLength={results.length}
 							next={loadMoreResults}

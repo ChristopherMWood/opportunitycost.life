@@ -4,7 +4,7 @@ import CostByTypeMap from './costTypes';
 export const getOpportunityCostByType = (totalSeconds, opportunityCostType) => {
 	let secondsOfType = CostByTypeMap[opportunityCostType];
 	const calc = totalSeconds / secondsOfType;
-	console.log(opportunityCostType);
+	opportunityCostType;
 
 	const roundedCostValue = Math.floor(calc);
 	return abbreviateNumber(roundedCostValue);
