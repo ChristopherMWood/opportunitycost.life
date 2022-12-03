@@ -43,6 +43,7 @@ function ChannelResultsView(props) {
 								onClick={copyUrlToClipboard}
 								variant='outlined'
 								startIcon={<ShareIcon />}
+								sx={{ color: '#FFFFFF' }}
 							>
 								Share
 							</Button>
@@ -67,9 +68,7 @@ function ChannelResultsView(props) {
 							<Alert
 								onClose={handleShareNotificationClose}
 								severity='success'
-								sx={{
-									width: '100%',
-								}}
+								sx={{ width: '100%', color: '#FFFFFF' }}
 							>
 								URL Copied to Clipboard!
 							</Alert>
