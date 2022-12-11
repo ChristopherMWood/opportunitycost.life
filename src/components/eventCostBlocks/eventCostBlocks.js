@@ -7,26 +7,15 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import HotelIcon from '@mui/icons-material/Hotel';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import InfoIcon from '@mui/icons-material/Info';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 import { CostInSeconds } from '../../domain/costTypes';
 import EventCostBlock from '../eventCostBlock/eventCostBlock';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import Popover from '@mui/material/Popover';
 import './styles.scss';
 
 const iconFontSize = 60;
-
-const modalStyle = {
-	position: 'absolute',
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	width: 400,
-	bgcolor: 'background.paper',
-	border: '2px solid #000',
-	boxShadow: 24,
-	p: 4,
-};
 
 const specificOpportunityCosts = [
 	{
@@ -100,14 +89,17 @@ const specificCostBlock = (item, videoOpportunityCost, index) => {
 };
 
 const EventCostBlocks = props => {
-	const [unitsModalOpen, setUnitsModalOpen] = React.useState(false);
+	const [anchorEl, setAnchorEl] = React.useState(null);
+
+	const showPopover = Boolean(anchorEl);
+	const id = showPopover ? 'simple-popover' : undefined;
 
 	const onAboutClicked = () => {
-		setUnitsModalOpen(true);
+		setAnchorEl(event.currentTarget);
 	};
 
 	const handleClose = () => {
-		setUnitsModalOpen(false);
+		setAnchorEl(null);
 	};
 
 	const getSpecificOpportunityCosts = () => {
@@ -129,23 +121,30 @@ const EventCostBlocks = props => {
 
 	return (
 		<Container>
-			<Modal
-				sx={modalStyle}
-				open={unitsModalOpen}
-				onClose={handleClose}
-				aria-labelledby='parent-modal-title'
-				aria-describedby='parent-modal-description'
-			>
-				<Box sx={{ width: 400 }}>
-					<h2 id='parent-modal-title'>Text in a modal</h2>
-					<p id='parent-modal-description'>
-						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-					</p>
-				</Box>
-			</Modal>
 			<Typography variant='h4' align='center'>
 				Additional Stats{' '}
 				<InfoIcon className='info-icon' onClick={onAboutClicked} />
+				<Popover
+					id={id}
+					open={showPopover}
+					anchorEl={anchorEl}
+					onClose={handleClose}
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'left',
+					}}
+				>
+					<Box sx={{ backgroundColor: 'black', color: 'white', padding: '10px' }}>
+						<Typography>Cost Units</Typography>
+						<Divider sx={{backgroundColor: 'white', height: 2}} />
+						<Typography>K = Thousand (10<sup>3</sup>)</Typography>
+						<Typography>M = Million (10<sup>6</sup>)</Typography>
+						<Typography>B = Billion (10<sup>9</sup>)</Typography>
+						<Typography>T = Tera (10<sup>12</sup>)</Typography>
+						<Typography>P = Peta (10<sup>15</sup>)</Typography>
+						<Typography>E = Exa (10<sup>18</sup>)</Typography>
+					</Box>
+				</Popover>
 			</Typography>
 			<Stack spacing={5}>{getSpecificOpportunityCosts()}</Stack>
 		</Container>

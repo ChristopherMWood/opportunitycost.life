@@ -1,13 +1,14 @@
 import { Stack, Box } from '@mui/system';
 import Skeleton from '@mui/material/Skeleton';
 import { abbreviateNumber } from 'js-abbreviation-number';
+import { unitSymbols } from '../../domain/costHelpers';
 import './styles.scss';
 import { Typography } from '@mui/material';
 
 function EventCostBlock(props) {
 	const rawCostValue = props.totalOpportunityCost / props.item.costPer;
 	const roundedCostValue = Math.floor(rawCostValue);
-	const abbreviatedValue = abbreviateNumber(roundedCostValue);
+	const abbreviatedValue = abbreviateNumber(roundedCostValue, 1, { symbols: unitSymbols});
 
 	return (
 		<Stack spacing={2} direction='row' className='event-cost-block'>
