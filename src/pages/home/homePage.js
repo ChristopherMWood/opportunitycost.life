@@ -39,7 +39,7 @@ function HomePage() {
 			setFirstPageLoad(false);
 			loadChannelData(channelId);
 		}
-	}, []);
+	}, [location]);
 
 	const onResultsReset = () => {
 		setLoadedViaUrl(false);
