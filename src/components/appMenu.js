@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import CottageIcon from '@mui/icons-material/Cottage';
+import CalculateIcon from '@mui/icons-material/Calculate';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import HikingIcon from '@mui/icons-material/Hiking';
 import InfoIcon from '@mui/icons-material/Info';
@@ -18,10 +18,10 @@ const menuIconColor = 'icon.primary';
 
 const primaryMenuOptions = [
 	{
-		text: 'Home',
+		text: 'Calculator',
 		linkTo: '/',
 		isInternal: true,
-		icon: <CottageIcon sx={{ color: menuIconColor }} />,
+		icon: <CalculateIcon sx={{ color: menuIconColor }} />,
 	},
 	{
 		text: 'Top Videos',
