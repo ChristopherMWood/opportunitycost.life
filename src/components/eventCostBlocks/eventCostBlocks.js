@@ -1,3 +1,4 @@
+import React from 'react';
 import { Stack, Container } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import PregnantWomanIcon from '@mui/icons-material/PregnantWoman';
@@ -5,12 +6,27 @@ import SchoolIcon from '@mui/icons-material/School';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import HotelIcon from '@mui/icons-material/Hotel';
 import WeekendIcon from '@mui/icons-material/Weekend';
+import InfoIcon from '@mui/icons-material/Info';
 import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 import { CostInSeconds } from '../../domain/costTypes';
 import EventCostBlock from '../eventCostBlock/eventCostBlock';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import './styles.scss';
 
 const iconFontSize = 60;
+
+const modalStyle = {
+	position: 'absolute',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	width: 400,
+	bgcolor: 'background.paper',
+	border: '2px solid #000',
+	boxShadow: 24,
+	p: 4,
+};
 
 const specificOpportunityCosts = [
 	{
@@ -84,6 +100,16 @@ const specificCostBlock = (item, videoOpportunityCost, index) => {
 };
 
 const EventCostBlocks = props => {
+	const [unitsModalOpen, setUnitsModalOpen] = React.useState(false);
+
+	const onAboutClicked = () => {
+		setUnitsModalOpen(true);
+	};
+
+	const handleClose = () => {
+		setUnitsModalOpen(false);
+	};
+
 	const getSpecificOpportunityCosts = () => {
 		const specificCost = [];
 
@@ -103,8 +129,23 @@ const EventCostBlocks = props => {
 
 	return (
 		<Container>
+			<Modal
+				sx={modalStyle}
+				open={unitsModalOpen}
+				onClose={handleClose}
+				aria-labelledby='parent-modal-title'
+				aria-describedby='parent-modal-description'
+			>
+				<Box sx={{ width: 400 }}>
+					<h2 id='parent-modal-title'>Text in a modal</h2>
+					<p id='parent-modal-description'>
+						Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+					</p>
+				</Box>
+			</Modal>
 			<Typography variant='h4' align='center'>
-				Additional Stats
+				Additional Stats{' '}
+				<InfoIcon className='info-icon' onClick={onAboutClicked} />
 			</Typography>
 			<Stack spacing={5}>{getSpecificOpportunityCosts()}</Stack>
 		</Container>
