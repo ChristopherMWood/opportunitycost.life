@@ -2,7 +2,6 @@ import './styles.scss';
 import React, { useState } from 'react';
 import { Box, Stack, Container } from '@mui/system';
 import Link from '@mui/material/Link';
-import Button from '@mui/material/Button';
 import ShareIcon from '@mui/icons-material/Share';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -12,6 +11,8 @@ import MuiAlert from '@mui/material/Alert';
 import CostBlocks from '../costBlocks/costBlocks';
 import EventCostBlocks from '../eventCostBlocks/eventCostBlocks';
 import { Typography } from '@mui/material';
+import ShareButton from '../shareButton';
+import ResetButton from '../resetButton';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
@@ -39,21 +40,21 @@ function VideoResultsView(props) {
 				<Stack spacing={5}>
 					<Container>
 						<Stack direction='row' justifyContent='center' spacing={2}>
-							<Button
+							<ShareButton
 								onClick={copyUrlToClipboard}
 								variant='outlined'
 								startIcon={<ShareIcon />}
 								sx={{ color: '#FFFFFF' }}
 							>
 								Share
-							</Button>
-							<Button
+							</ShareButton>
+							<ResetButton
 								onClick={props.onReset}
 								variant='contained'
 								endIcon={<RestartAltIcon />}
 							>
 								Reset
-							</Button>
+							</ResetButton>
 						</Stack>
 						<Snackbar
 							anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
