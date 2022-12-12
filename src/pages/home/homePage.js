@@ -128,7 +128,7 @@ function HomePage() {
 
 			<SingleFieldInputForm
 				className='primary-site-input-container'
-				inputLabel='Youtube URL'
+				inputLabel='Enter a Youtube video URL'
 				buttonText='Calculate'
 				value={urlInputValue}
 				onChange={updateInput}

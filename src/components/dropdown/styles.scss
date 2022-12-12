@@ -2,4 +2,18 @@
 	width: 50%;
 	min-width: 300px;
 	margin: 0 auto;
+
+	.MuiSvgIcon-root {
+		color: white !important;
+	}
+
+	.MuiFormLabel-root {
+		color: white !important;
+	}
+
+	fieldset {
+		border-width: 2px !important;
+		border-image-slice: 1 !important;
+		border-image-source: linear-gradient(to left, #d53a9d, #743ad5) !important;
+	}
 }
