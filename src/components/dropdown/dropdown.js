@@ -5,17 +5,14 @@ import Select from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
 import './styles.scss';
 
-const StyledDropdown = styled(Select)({
-	// TODO: Implement
-});
-
+const StyledSelect = styled(Select)(() => ({}));
 
 function Dropdown(props) {
 	return (
 		<div className='dropdown-container'>
 			<FormControl fullWidth>
 				<InputLabel id='demo-simple-select-label'>Cost Type</InputLabel>
-				<StyledDropdown
+				<StyledSelect
 					labelId='demo-simple-select-label'
 					id='demo-simple-select'
 					value={props.startValue}
@@ -29,7 +26,7 @@ function Dropdown(props) {
 							</MenuItem>
 						);
 					})}
-				</StyledDropdown>
+				</StyledSelect>
 			</FormControl>
 		</div>
 	);

@@ -3,15 +3,7 @@ import Stack from '@mui/system/Stack';
 import TextField from '@mui/material/TextField';
 import LoadingButton from '@mui/lab/LoadingButton';
 import './styles.scss';
-import { styled } from '@mui/material/styles';
-
-const StyledTextField = styled(TextField)({
-	// TODO: Implement
-});
-
-const StyledButton = styled(LoadingButton)({
-	// TODO: Implement
-});
+import { Typography } from '@mui/material';
 
 function SingleFieldInputForm(props) {
 	const [error, setError] = useState(undefined);
@@ -31,24 +23,32 @@ function SingleFieldInputForm(props) {
 	return (
 		<Stack direction='row' justifyContent='center' className={props.className}>
 			<form onSubmit={onSubmit}>
-				<StyledTextField
+				<TextField
 					className='stylized-input'
 					value={props.value}
 					onChange={e => props.onChange(e)}
 					label={props.inputLabel}
 					variant='standard'
 					name='youtube-url'
-					error={error !== undefined}
-					helperText={error}
+					sx={{
+						borderBottom: '1px solid purple',
+						borderRadius: 1,
+						borderWidth: '2px !important',
+						borderImageSlice: '1 !important',
+						borderImageSource:
+							'linear-gradient(to left, #d53a9d, #743ad5) !important',
+					}}
+					InputProps={{ disableUnderline: true }}
 					disabled={props.loading}
 				/>
-				<StyledButton
+				<LoadingButton
 					className='stylized-button button-59'
 					type='submit'
 					loading={props.loading}
 				>
 					{props.buttonText}
-				</StyledButton>
+				</LoadingButton>
+				<Typography sx={{ color: '#f14033' }}>{error}</Typography>
 			</form>
 		</Stack>
 	);
